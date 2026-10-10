@@ -6,7 +6,7 @@ Website có hai không gian chuyển qua thanh trên cùng: **Projects** cho cá
 
 ## Giao diện sáng / tối
 
-Nút **☾ Tối / ☀ Sáng** ở góc trên cùng đổi giao diện cho cả Projects, Personal Blog và các trình soạn. Lần đầu web dùng chế độ của thiết bị; sau khi chọn, lựa chọn được nhớ trong trình duyệt này. Khách cũng có thể đổi giao diện mà không cần đăng nhập. Lựa chọn này chỉ là cách hiển thị, không sửa nội dung hay đăng lên GitHub.
+Nút **☾ Tối / ☀ Sáng** ở góc trên cùng đổi giao diện cho cả Projects, Personal Blog và các trình soạn. Lần đầu web mặc định Light mode; sau khi chọn, lựa chọn được nhớ trong trình duyệt này. Khách cũng có thể đổi giao diện mà không cần đăng nhập. Lựa chọn này chỉ là cách hiển thị, không sửa nội dung hay đăng lên GitHub.
 
 ## Logo riêng cho từng dự án
 
@@ -31,6 +31,7 @@ Nút **Dự án ⌄** trên đầu trang mở danh sách các dự án. Mỗi d�
 - **Tạo dự án mới:** bật chỉnh sửa bản xem thử hoặc kết nối GitHub, bấm **Dự án → Tạo dự án mới**. Dự án mới bắt đầu với đội ngũ và bài viết trống; dữ liệu cũ không bị thay thế.
 - **Chuyển dự án:** chọn **Mở dự án**. Không cần lưu hay đăng nhập để xem các dự án đã công bố.
 - **Lưu trữ:** chuyển dự án cũ sang danh sách **Đã lưu trữ**, vẫn xem và mở được đầy đủ nội dung/media.
+- **Xóa dự án:** trong danh sách dự án, bấm Xóa dự án và xác nhận. Dự án vào Thùng rác và ẩn khỏi website, kể cả khi mở link cũ. Thùng rác chỉ xuất hiện với người quản trị; có thể khôi phục nguyên đội ngũ, bài viết và media. Xóa dự án cuối cùng vẫn giữ blog và cho phép tạo dự án mới.
 - **Khôi phục:** đưa dự án đã lưu trữ trở lại danh sách đang thực hiện.
 - Link website có tham số `?project=...`, có thể chia sẻ link tới đúng dự án và đúng bài viết.
 
@@ -54,7 +55,7 @@ Không cần cài thư viện hoặc chạy build. Các đường dẫn tương 
 3. Để đăng thật, dùng **Kết nối GitHub**. Tạo fine-grained personal access token trong cài đặt GitHub, chỉ chọn repository này, quyền **Contents: Read and write**, đặt thời hạn. Nhập token trực tiếp vào website, không gửi qua chat. Nếu repo thuộc tổ chức, token có thể cần phê duyệt theo chính sách tổ chức.
 4. Kết nối xong, dùng các nút **Chỉnh sửa**, **Thêm thành viên**, **Viết báo cáo tuần**. Nút **Đăng lên GitHub** tạo một commit chứa nội dung và media. Chờ workflow Pages hoàn thành để khách thấy thay đổi.
 
-Có thể lưu nhiều chỉnh sửa liên tiếp trong cùng phiên kết nối. Các lần kiểm tra phiên bản nội dung trên GitHub bỏ qua bộ nhớ đệm HTTP để tránh báo xung đột với chính lần lưu trước. Nếu nội dung thực sự thay đổi ở một phiên khác, website vẫn chặn ghi đè.
+Có thể lưu nhiều chỉnh sửa liên tiếp trong cùng phiên kết nối. Các lần kiểm tra phiên bản nội dung trên GitHub có URL mới, bỏ qua bộ nhớ đệm HTTP ở trình duyệt và máy chủ trung gian, đọc nội dung theo đúng commit và tự thử lại khi GitHub còn trả phiên bản ngay trước lần lưu để tránh báo xung đột với chính lần lưu trước. Nếu nội dung thực sự thay đổi ở một phiên khác, website vẫn chặn ghi đè.
 
 Token chỉ giữ trong bộ nhớ tab, chỉ gửi tới API GitHub, không nằm trong mã nguồn, localStorage, IndexedDB hay bản sao nội dung. Tải lại trang hoặc ngắt kết nối sẽ xóa phiên. Người xem chưa kết nối không có quyền ghi vào repository. Token của tài khoản khác chaos-long bị từ chối trước khi tải nội dung quản trị.
 

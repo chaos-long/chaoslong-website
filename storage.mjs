@@ -51,10 +51,12 @@ function utf8Base64(text){const bytes=new TextEncoder().encode(text);let binary=
 export class GitHubStore {
   constructor({owner,repo,branch,token,request=globalThis.fetch.bind(globalThis)}){
     if(!/^[A-Za-z0-9-]+$/.test(owner)||!/^[A-Za-z0-9_.-]+$/.test(repo))throw new Error('Tên tài khoản hoặc repository không hợp lệ.');
-    this.owner=owner;this.repo=repo;this.branch=branch;this.token=token;this.request=request;this.base=`https://api.github.com/repos/${owner}/${repo}`;this.mediaCache=new Map();this.adminVerified=false;
+    this.owner=owner;this.repo=repo;this.branch=branch;this.token=token;this.request=request;this.base=`https://api.github.com/repos/${owner}/${repo}`;this.mediaCache=new Map();this.outdatedHeads=new Set();this.adminVerified=false;
   }
   async api(path,method='GET',body){
-    const response=await this.request(`${this.base}${path}`,{method,cache:'no-store',headers:{Accept:'application/vnd.github+json',Authorization:`Bearer ${this.token}`,'X-GitHub-Api-Version':'2026-03-10',...(body?{'Content-Type':'application/json'}:{})},...(body?{body:JSON.stringify(body)}:{})});
+    const url=new URL(`${this.base}${path}`);
+    if(method==='GET')url.searchParams.set('_fresh',crypto.randomUUID());
+    const response=await this.request(url.href,{method,cache:'no-store',headers:{Accept:'application/vnd.github+json',Authorization:`Bearer ${this.token}`,'X-GitHub-Api-Version':'2026-03-10',...(body?{'Content-Type':'application/json'}:{})},...(body?{body:JSON.stringify(body)}:{})});
     if(!response.ok){
       if(response.status===401)throw new Error('Token không hợp lệ hoặc đã hết hạn. Hãy kết nối lại.');
       if(response.status===403)throw new Error('GitHub từ chối thao tác. Kiểm tra quyền Contents: Read and write, hạn mức API và chính sách của repository.');
@@ -71,22 +73,28 @@ export class GitHubStore {
     if(String(identity.login).toLowerCase()!=='chaos-long'||this.owner.toLowerCase()!=='chaos-long')throw new Error('Chỉ tài khoản chaos-long được quyền chỉnh sửa website này.');
     const repo=await this.api('');if(repo.permissions && !repo.permissions.push)throw new Error('Tài khoản này chưa có quyền ghi vào repository.');
     this.branch=this.branch||repo.default_branch;
-    const file=await this.api(`/contents/content.json?ref=${encodeURIComponent(this.branch)}`);
+    const ref=await this.api(`/git/ref/heads/${encodeURIComponent(this.branch)}`);
+    const file=await this.api(`/contents/content.json?ref=${ref.object.sha}`);
     if(file.encoding!=='base64'||!file.content)throw new Error('content.json phải dưới 1 MB và đúng định dạng của website.');
     const bytes=Uint8Array.from(atob(file.content.replace(/\s/g,'')),c=>c.charCodeAt(0));const data=JSON.parse(new TextDecoder().decode(bytes));
     if(!validContent(data))throw new Error('Repository chưa có đúng cấu trúc nội dung của website.');
-    this.contentSha=file.sha;this.adminVerified=true;return data;
+    this.contentSha=file.sha;this.outdatedHeads.clear();this.adminVerified=true;return data;
   }
   async save(content,message='Update project journal') {
     if(!this.adminVerified)throw new Error('Cần xác thực tài khoản quản trị chaos-long trước khi lưu.');
     if(this.busy)throw new Error('Đang lưu một thay đổi khác.');this.busy=true;
     try{
-      // Read fresh GitHub revisions: cached refs can still point to our previous save.
-      // Compare the content revision before uploading; advance the branch atomically after all blobs exist.
-      const ref=await this.api(`/git/ref/heads/${encodeURIComponent(this.branch)}`);
-      const head=await this.api(`/git/commits/${ref.object.sha}`);
-      const current=await this.api(`/contents/content.json?ref=${ref.object.sha}`);
-      if(current.sha!==this.contentSha)throw new Error('Nội dung đã được người khác sửa. Kết nối lại để lấy bản mới trước khi lưu; nội dung đang soạn vẫn ở đây.');
+      // URL nonces bypass upstream caches as well as the browser's HTTP cache.
+      // A pinned commit keeps the file revision and parent tree from the same snapshot.
+      let ref,head,current;
+      for(let attempt=0;attempt<4;attempt++){
+        ref=await this.api(`/git/ref/heads/${encodeURIComponent(this.branch)}`);
+        current=await this.api(`/contents/content.json?ref=${ref.object.sha}`);
+        if(current.sha===this.contentSha&&!this.outdatedHeads.has(ref.object.sha))break;
+        if(attempt===3)throw new Error('Nội dung trên GitHub khác với phiên đang mở. Bản đang soạn vẫn được giữ; hãy kiểm tra xem có tab khác vừa lưu nội dung này không.');
+        await new Promise(resolve=>setTimeout(resolve,200*(attempt+1)));
+      }
+      head=await this.api(`/git/commits/${ref.object.sha}`);
       const data=structuredClone(content);const tree=[];const newCache=new Map();let total=0;
       const visit=async object=>{
         for(const key of Object.keys(object)){
@@ -106,9 +114,9 @@ export class GitHubStore {
       const nextTree=await this.api('/git/trees','POST',{base_tree:head.tree.sha,tree});
       const commit=await this.api('/git/commits','POST',{message,tree:nextTree.sha,parents:[ref.object.sha]});
       await this.api(`/git/refs/heads/${encodeURIComponent(this.branch)}`,'PATCH',{sha:commit.sha,force:false});
-      this.contentSha=blob.sha;for(const [path,url]of newCache)this.mediaCache.set(path,url);
+      this.outdatedHeads.add(ref.object.sha);this.contentSha=blob.sha;for(const [path,url]of newCache)this.mediaCache.set(path,url);
       return data;
     }finally{this.busy=false}
   }
-  disconnect(){this.token='';this.adminVerified=false;this.mediaCache.clear();}
+  disconnect(){this.token='';this.adminVerified=false;this.mediaCache.clear();this.outdatedHeads.clear();}
 }
