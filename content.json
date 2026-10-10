@@ -168,23 +168,7 @@
         "body": "## Vấn đề\n\n## Giải pháp\n\n## Kết quả và điều học được\n",
         "status": "Đang phát triển",
         "demoUrl": "",
-        "media": [
-          {
-            "id": "6c324a13-070a-4128-8157-c79b9aac45d4",
-            "type": "embed",
-            "src": "https://www.youtube.com/watch?v=OqWwuPfIyeY",
-            "caption": "",
-            "name": "Video từ link"
-          },
-          {
-            "id": "1b213037-c81c-4c36-8494-4a51f0ec0d6b",
-            "type": "image",
-            "src": "media/3bf87f79-53c2-46a4-a97e-08ccec6c4a0f.jpg",
-            "caption": "",
-            "name": "cháo lòng.jpg",
-            "size": 56536
-          }
-        ]
+        "media": []
       }
     }
   ],
