@@ -165,10 +165,19 @@
       "finish": {
         "title": "Từ ý tưởng\nđến sản phẩm.",
         "summary": "Thêm câu chuyện, hình ảnh và video demo khi sản phẩm sẵn sàng.",
-        "body": "## Vấn đề\n\n## Giải pháp\n\n## Kết quả và điều học được\n",
+        "body": "## Phần này vừa có thể viết mark down vừa có thể viết latex, hỗ trợ chèm file md\n",
         "status": "Đang phát triển",
         "demoUrl": "",
-        "media": [],
+        "media": [
+          {
+            "id": "0aa207b7-512f-4d9b-99d9-123c372ea3ba",
+            "type": "image",
+            "src": "media/9bab5e0a-f687-4fe1-b060-44b2382fdb49.jpg",
+            "caption": "",
+            "name": "Untitled.jpg",
+            "size": 26502
+          }
+        ],
         "cover": {
           "id": "1dec2883-4970-4e79-b7f7-28f692e4cf32",
           "type": "embed",
