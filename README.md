@@ -8,6 +8,10 @@ Website có hai không gian chuyển qua thanh trên cùng: **Projects** cho cá
 
 Nút **☾ Tối / ☀ Sáng** ở góc trên cùng đổi giao diện cho cả Projects, Personal Blog và các trình soạn. Lần đầu web dùng chế độ của thiết bị; sau khi chọn, lựa chọn được nhớ trong trình duyệt này. Khách cũng có thể đổi giao diện mà không cần đăng nhập. Lựa chọn này chỉ là cách hiển thị, không sửa nội dung hay đăng lên GitHub.
 
+## Logo riêng cho từng dự án
+
+Kết nối quản trị, mở đúng dự án rồi chọn **Home → Sửa giới thiệu / logo → Tải logo mới lên**. Logo hiển thị ở đầu trang, danh sách dự án và phần minh họa sản phẩm; chuyển dự án sẽ chuyển sang logo tương ứng. Logo được lưu cùng dự án và media trên GitHub. Gỡ ảnh để trở lại logo mặc định. Chỉnh sửa giới thiệu vẫn giữ logo đã có. Hỗ trợ JPG, PNG, WebP, GIF, AVIF; PNG trong suốt thích hợp cho logo.
+
 ## Blog cá nhân và ảnh nền
 
 Blog có banner phong cảnh, danh sách bài viết, tìm kiếm, lưu trữ theo năm, chuyên mục, thẻ và trang Về mình. Mỗi bài có ngày, chuyên mục, thẻ, nội dung và media. Nội dung hỗ trợ tiêu đề, danh sách và các đoạn code đặt giữa hai dòng có ba dấu backtick.
@@ -78,3 +82,19 @@ Dùng một HTTP static server ở thư mục mã nguồn, ví dụ `python -m h
 - [GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages)
 - [GitHub Git database API](https://docs.github.com/en/rest/git)
 - [Fine-grained personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
+
+### Avatar blog và minh họa Chaoslong
+
+Trong Personal Blog → Về mình, sau khi kết nối quản trị, bấm Đổi avatar → tải ảnh → Đăng lên GitHub. Có thể gỡ để dùng avatar chữ mặc định. Avatar lưu riêng, giữ nguyên ảnh nền, bài viết và các dự án.
+
+Home dùng ảnh cháo lòng do chủ website cung cấp ở assets/chaoslong.jpg, đặt trong khung trắng với viền xanh dịu phù hợp cả chế độ sáng và tối.
+
+## Trình soạn bài và LaTeX
+
+Báo cáo tuần, blog và câu chuyện sản phẩm dùng trình soạn có thanh định dạng, ba chế độ Viết / Chia đôi / Xem trước, đếm từ và ký tự. Có nút chèn tiêu đề, đậm/nghiêng, danh sách, trích dẫn, code ngắn, khối code với lựa chọn ngôn ngữ, công thức trong dòng hoặc riêng dòng. Khối code trên bài đã đăng có nút Sao chép code. Ctrl+B và Ctrl+I hoạt động khi nhập nội dung.
+
+LaTeX dùng KaTeX 0.19.0 đóng gói trong assets/katex.mjs, xuất MathML để trình duyệt hiển thị và hỗ trợ đọc công thức. Dùng dollar đơn cho công thức trong dòng, dollar đôi trên dòng riêng cho công thức lớn; hỗ trợ cả dấu ngoặc LaTeX. Công thức sai hiện đỏ; không xử lý toán trong code. KaTeX giới hạn mở rộng macro và không cho phép lệnh HTML/URL tùy ý. Bản thân khối code chỉ hiển thị chữ, không chạy chương trình. Không cần dịch vụ soạn bài bên ngoài. Giấy phép thư viện nằm tại assets/katex-LICENSE.txt.
+
+Markdown được xử lý bằng Marked 18.1.0: hỗ trợ bảng, danh sách lồng nhau, checkbox công việc, liên kết và ảnh bằng link HTTPS, đậm/nghiêng/gạch ngang, trích dẫn, các mức tiêu đề và khối code. HTML viết trực tiếp chỉ hiện thành chữ. Nút Nhập file .md nhận .md/.markdown/.txt tối đa 600 KB, cho chọn thêm cuối hoặc thay nội dung; có nút tải bản .md. Ảnh dùng đường dẫn file trong máy không tự đăng theo file Markdown, cần tải lên phần đính kèm hoặc dùng link ảnh HTTPS.
+
+File đính kèm: PDF, DOC/DOCX, XLS/XLSX, PPT/PPTX, TXT, MD, CSV, JSON, ZIP cùng ảnh/video; tối đa 20 MB/file, 40 MB/lần lưu. File lưu trên GitHub trong cùng lần đăng bài, hiện thành thẻ tải xuống. Giữ nguyên tên hiển thị và phần mở rộng. Không mở/chạy nội dung file trong trình soạn.

@@ -1,6 +1,9 @@
 import {personalDefaults} from './blog.mjs';
 export const MAX_FILE = 20 * 1024 * 1024;
 const allowedTypes = new Set(['image/jpeg','image/png','image/webp','image/gif','image/avif','video/mp4','video/webm','video/ogg']);
+export const documentTypes={pdf:'application/pdf',txt:'text/plain',md:'text/markdown',markdown:'text/markdown',csv:'text/csv',json:'application/json',doc:'application/msword',docx:'application/vnd.openxmlformats-officedocument.wordprocessingml.document',xls:'application/vnd.ms-excel',xlsx:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',ppt:'application/vnd.ms-powerpoint',pptx:'application/vnd.openxmlformats-officedocument.presentationml.presentation',zip:'application/zip'};
+const documentMime=new Set(Object.values(documentTypes));
+export function safeFileUrl(value){if(typeof value==='string'){const match=value.match(/^data:([^;]+);base64,[A-Za-z0-9+/=]+$/);if(match&&documentMime.has(match[1]))return value}return safeUrl(value)}
 export function safeUrl(value, {image=false}={}) {
   if (typeof value !== 'string' || !value) return '';
   if (image && /^data:(image\/(jpeg|png|webp|gif|avif)|video\/(mp4|webm|ogg));base64,[A-Za-z0-9+/=]+$/.test(value)) return value;
@@ -20,10 +23,11 @@ export function videoEmbed(value) {
   return '';
 }
 export async function readMediaFile(file) {
-  if (!allowedTypes.has(file.type)) throw new Error('Chọn ảnh JPG, PNG, WebP, GIF, AVIF hoặc video MP4, WebM, OGG.');
+  const extension=file.name.split('.').pop().toLowerCase(),documentType=documentTypes[extension];
+  if (!allowedTypes.has(file.type)&&!documentType) throw new Error('Chọn ảnh/video hoặc tài liệu PDF, Word, Excel, PowerPoint, TXT, MD, CSV, JSON, ZIP.');
   if (file.size > MAX_FILE) throw new Error('Mỗi file tối đa 20 MB. Với video dài, hãy dùng link YouTube/Vimeo.');
   const src = await new Promise((resolve,reject) => { const reader = new FileReader(); reader.onload=()=>resolve(reader.result); reader.onerror=()=>reject(new Error('Không đọc được file.')); reader.readAsDataURL(file); });
-  return {id:crypto.randomUUID(),type:file.type.startsWith('image/')?'image':'video',src,caption:'',name:file.name};
+  return {id:crypto.randomUUID(),type:documentType?'file':file.type.startsWith('image/')?'image':'video',src:documentType?src.replace(/^data:[^;]*;base64,/,`data:${documentType};base64,`):src,caption:'',name:file.name,size:file.size,...(documentType?{extension}:{})};
 }
 export async function localRead() {
   const db = await database(); return new Promise((resolve,reject)=>{const req=db.transaction('drafts').objectStore('drafts').get('content');req.onsuccess=()=>{resolve(req.result);db.close()};req.onerror=()=>{reject(req.error);db.close()};});
@@ -87,9 +91,9 @@ export class GitHubStore {
         for(const key of Object.keys(object)){
           const value=object[key];
           if((key==='src'||key==='photo'||key==='cover')&&typeof value==='string'&&value.startsWith('data:')){
-            const match=value.match(/^data:([^;]+);base64,([A-Za-z0-9+/=]+)$/);if(!match||!allowedTypes.has(match[1]))throw new Error('File media không được hỗ trợ.');
+            const match=value.match(/^data:([^;]+);base64,([A-Za-z0-9+/=]+)$/);const documentAllowed=key==='src'&&object.type==='file'&&documentTypes[object.extension]===match?.[1];if(!match||(!allowedTypes.has(match[1])&&!documentAllowed))throw new Error('File media không được hỗ trợ.');
             const size=match[2].length*3/4;total+=size;if(size>MAX_FILE+2||total>40*1024*1024)throw new Error('Mỗi file tối đa 20 MB, mỗi lần lưu tối đa 40 MB. Video dài hãy dùng link.');
-            const ext={ 'image/jpeg':'jpg','image/png':'png','image/webp':'webp','image/gif':'gif','image/avif':'avif','video/mp4':'mp4','video/webm':'webm','video/ogg':'ogv'}[match[1]];
+            const ext=documentAllowed?object.extension:{ 'image/jpeg':'jpg','image/png':'png','image/webp':'webp','image/gif':'gif','image/avif':'avif','video/mp4':'mp4','video/webm':'webm','video/ogg':'ogv'}[match[1]];
             const path=`media/${crypto.randomUUID()}.${ext}`;const blob=await this.api('/git/blobs','POST',{content:match[2],encoding:'base64'});
             tree.push({path,mode:'100644',type:'blob',sha:blob.sha});object[key]=path;newCache.set(path,value);
           }else if(value && typeof value==='object')await visit(value);
