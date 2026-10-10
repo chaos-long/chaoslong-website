@@ -161,7 +161,19 @@
           "color": "lavender"
         }
       ],
-      "posts": [],
+      "posts": [
+        {
+          "id": "ee1fc8e0-728e-4cdd-840d-7e1112d9d6b0",
+          "week": 1,
+          "title": "Lên ý tưởng ",
+          "date": "2026-10-10",
+          "category": "Planning",
+          "summary": "idk",
+          "body": "## Những gì đã làm\n\n## Điều học được\n\n## Tuần tiếp theo\n",
+          "media": [],
+          "demo": false
+        }
+      ],
       "finish": {
         "title": "Từ ý tưởng\nđến sản phẩm.",
         "summary": "Thêm câu chuyện, hình ảnh và video demo khi sản phẩm sẵn sàng.",
