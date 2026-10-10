@@ -117,7 +117,16 @@
         "note": "Mỗi ý tưởng đều có một hành trình.",
         "logo": null
       },
-      "team": [],
+      "team": [
+        {
+          "id": "63995d95-a0af-49dd-ac9a-e0b6c1404df3",
+          "name": "Huỳnh Đăng Thức",
+          "role": "Thành viên",
+          "bio": "",
+          "photo": "",
+          "color": "lavender"
+        }
+      ],
       "posts": [],
       "finish": {
         "title": "Từ ý tưởng\nđến sản phẩm.",
