@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "activeProjectId": "project-forma",
+  "activeProjectId": "cd943173-aa18-4cee-935f-c910abd61b6c",
   "projects": [
     {
       "id": "project-forma",
@@ -81,6 +81,28 @@
         "demoUrl": "",
         "media": [],
         "status": "Đang phát triển"
+      }
+    },
+    {
+      "id": "cd943173-aa18-4cee-935f-c910abd61b6c",
+      "createdAt": "2026-10-10",
+      "archived": false,
+      "project": {
+        "name": "tmp",
+        "eyebrow": "MỘT HÀNH TRÌNH MỚI",
+        "title": "Xin chào,\nđây là tmp.",
+        "description": "Ghi lại quá trình khám phá, thiết kế và xây dựng sản phẩm của nhóm.",
+        "note": "Mỗi ý tưởng đều có một hành trình."
+      },
+      "team": [],
+      "posts": [],
+      "finish": {
+        "title": "Từ ý tưởng\nđến sản phẩm.",
+        "summary": "Thêm câu chuyện, hình ảnh và video demo khi sản phẩm sẵn sàng.",
+        "body": "## Vấn đề\n\n## Giải pháp\n\n## Kết quả và điều học được\n",
+        "status": "Đang phát triển",
+        "demoUrl": "",
+        "media": []
       }
     }
   ],
