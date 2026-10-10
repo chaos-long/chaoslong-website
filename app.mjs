@@ -1,4 +1,4 @@
-import {safeUrl,videoEmbed,readMediaFile,localRead,localWrite,validContent,normalizeLibrary,GitHubStore} from './storage.mjs';
+import {safeUrl,videoEmbed,readMediaFile,localRead,localWrite,validContent,normalizeLibrary,GitHubStore} from './storage.mjs?v=20261010-connect';
 import {blogPage,blogRows} from './blog.mjs';
 const isLocalPreview=['localhost','127.0.0.1','::1'].includes(location.hostname);
 let blogQuery='',blogFilter='',blogFilterType='';
