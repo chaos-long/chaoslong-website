@@ -110,11 +110,12 @@
       "createdAt": "2026-10-10",
       "archived": false,
       "project": {
-        "name": "Nhập môn công nghệ thông tin(lý thuyết)",
+        "name": "Nhóm 5",
         "eyebrow": "MỘT HÀNH TRÌNH MỚI",
-        "title": "Xin chào,\nđây là Nhập môn công nghệ thông tin(lý thuyết).",
+        "title": "Xin chào,\nđây là Nhóm 5.",
         "description": "Ghi lại quá trình khám phá, thiết kế và xây dựng sản phẩm của nhóm.",
-        "note": "Mỗi ý tưởng đều có một hành trình."
+        "note": "Mỗi ý tưởng đều có một hành trình.",
+        "logo": null
       },
       "team": [],
       "posts": [],
