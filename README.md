@@ -1,6 +1,6 @@
 # Chaoslong's website
 
-Website ghi lại hành trình dự án với bốn phần: **Home**, **Team**, **Work**, **Finish Work**. Projects và Personal Blog dùng cùng bảng màu xanh, bố cục thoáng và thẻ nội dung; Home dùng chung ảnh nền với blog. Forma là tên nhóm mẫu, có thể sửa trên website.
+Website ghi lại hành trình dự án với bốn phần: **Home**, **Team**, **Work**, **Finish Work**. Projects và Personal Blog dùng cùng bảng màu xanh; Home của Projects dùng nền trơn và sơ đồ mũi tên, còn ảnh nền chỉ thuộc blog. Forma là tên nhóm mẫu, có thể sửa trên website.
 
 Website có hai không gian chuyển qua thanh trên cùng: **Projects** cho các dự án/nhóm, **Personal Blog** cho riêng chaos-long. Bài viết blog cá nhân lưu riêng với các báo cáo tuần.
 
