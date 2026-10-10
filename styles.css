@@ -52,3 +52,6 @@
 .project-intro .button.secondary{color:var(--accent);background:var(--surface);border-color:var(--line)}
 
 .danger-text{color:var(--danger)}.project-trash{margin-top:28px;border-top:1px solid var(--line);padding-top:20px}.project-trash summary{cursor:pointer;font-weight:600;color:var(--muted)}
+
+.finish-visual{min-width:0}.finish-visual.has-cover .media-grid{margin:0}.finish-visual.has-cover .media-grid img,.finish-visual.has-cover .media-grid video{width:100%;max-height:460px;object-fit:contain}.finish-visual.has-cover .media-grid .arrow-link{margin-top:10px;font-size:12px}.finish-cover-actions{margin-top:18px}.finish-cover-actions .button{font-size:12px;width:100%}
+.finish-visual.has-cover .media-grid iframe{min-height:200px}

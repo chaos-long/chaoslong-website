@@ -105,3 +105,7 @@ Markdown được xử lý bằng Marked 18.1.0: hỗ trợ bảng, danh sách l
 File đính kèm: PDF, DOC/DOCX, XLS/XLSX, PPT/PPTX, TXT, MD, CSV, JSON, ZIP cùng ảnh/video; tối đa 20 MB/file, 40 MB/lần lưu. File lưu trên GitHub trong cùng lần đăng bài, hiện thành thẻ tải xuống. Giữ nguyên tên hiển thị và phần mở rộng. Không mở/chạy nội dung file trong trình soạn.
 
 Video nhúng dùng `referrerpolicy="strict-origin-when-cross-origin"` để YouTube nhận diện tên miền website và tránh lỗi 153. Các liên kết thông thường vẫn giữ chính sách không gửi referrer. Dưới video có liên kết mở trên YouTube/Vimeo nếu người xem muốn xem trực tiếp.
+
+## Ảnh / video giới thiệu ở Finish Work
+
+Sau khi kết nối quản trị, mở đúng dự án → Finish Work → **Đổi ảnh / video giới thiệu** ở khung bên phải. Chọn một ảnh/video hoặc nhập link YouTube, Vimeo, MP4/WebM/OGG; sửa chú thích rồi đăng. File/link mới thay hình trước. Gỡ file và lưu để trở về hình minh họa mặc định. Ảnh/video giới thiệu lưu riêng trong `finish.cover`, chú thích ở `finish.coverCaption`; giữ nguyên câu chuyện và các file đính kèm bên dưới, logo, blog và những dự án khác.
