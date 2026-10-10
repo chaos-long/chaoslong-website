@@ -45,7 +45,7 @@ export function normalizeLibrary(data){
 }
 function utf8Base64(text){const bytes=new TextEncoder().encode(text);let binary='';for(let i=0;i<bytes.length;i+=8192)binary+=String.fromCharCode(...bytes.subarray(i,i+8192));return btoa(binary);}
 export class GitHubStore {
-  constructor({owner,repo,branch,token,request=fetch}){
+  constructor({owner,repo,branch,token,request=globalThis.fetch.bind(globalThis)}){
     if(!/^[A-Za-z0-9-]+$/.test(owner)||!/^[A-Za-z0-9_.-]+$/.test(repo))throw new Error('Tên tài khoản hoặc repository không hợp lệ.');
     this.owner=owner;this.repo=repo;this.branch=branch;this.token=token;this.request=request;this.base=`https://api.github.com/repos/${owner}/${repo}`;this.mediaCache=new Map();this.adminVerified=false;
   }
