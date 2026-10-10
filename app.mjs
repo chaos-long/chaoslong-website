@@ -1,6 +1,6 @@
 import {selectedProject,trashProject,restoreProject} from './assets/projects.mjs?v=20261010-trash';
-import {safeUrl,safeFileUrl,videoEmbed,readMediaFile,localRead,localWrite,validContent,normalizeLibrary,GitHubStore} from './storage.mjs?v=20261010-fresh-save-v2';
-import {blogPage,blogRows} from './blog.mjs?v=20261010-fullscreen-blog';
+import {safeUrl,safeFileUrl,videoEmbed,readMediaFile,localRead,localWrite,validContent,normalizeLibrary,GitHubStore} from './storage.mjs?v=20261010-security';
+import {blogPage,blogRows} from './blog.mjs?v=20261010-security';
 import {articleMarkup,setupWriter} from './assets/writer.mjs?v=20261010-editor';
 const isLocalPreview=['localhost','127.0.0.1','::1'].includes(location.hostname);
 let blogQuery='',blogFilter='',blogFilterType='';
@@ -57,7 +57,7 @@ function render(){
   $('#editor-bar').innerHTML=`<span>${store?`Đã kết nối ${esc(store.owner)}/${esc(store.repo)}`:'Bản xem thử · Thay đổi chỉ lưu trên trình duyệt này'}</span><button class="quiet" data-action="manage">${store?'Quản lý kết nối':'Kết nối GitHub để đăng thật'} ↗</button>`;
 }
 function openModal(title,body){dirty=false;dialog.classList.remove('writing-dialog');$('#dialog-content').innerHTML=`<h2>${title}</h2>${body}`;dialog.showModal()}
-function closeModal(){if(saving)return;if(dirty&&!confirm('Đóng và bỏ những thay đổi chưa lưu?'))return;dirty=false;dialog.close()}
+function closeModal(){if(saving)return;if(dirty&&!confirm('Đóng và bỏ những thay đổi chưa lưu?'))return;dirty=false;const tokenField=$('#token');if(tokenField)tokenField.value='';dialog.close()}
 function error(message){const target=$('#form-error');if(target)target.textContent=message;else toast(message)}
 function formFooter(){return `<p class="form-error" id="form-error" role="alert"></p><div class="form-footer"><span class="saving-note">${store?'Lưu vào GitHub · Website cập nhật sau khi triển khai xong.':'Bản xem thử · Chưa đăng công khai.'}</span><button class="button" type="submit" id="save-button">${store?'Đăng lên GitHub ↗':'Lưu bản xem thử'}</button></div>`}
 function field(name,label,value='',type='text',extra=''){return `<label for="${name}">${label}</label><input id="${name}" name="${name}" type="${type}" value="${esc(value)}" ${extra}>`}
@@ -124,7 +124,7 @@ function management(){
   if(store){$('#disconnect').onclick=()=>{store.disconnect();store=null;editing=false;library=normalizeLibrary(published);selectInitialProject();dirty=false;dialog.close();render();toast('Đã ngắt kết nối. Token đã được xóa khỏi bộ nhớ.')};$('#backup').onclick=downloadBackup;return}
   if(isLocalPreview)$('#local-mode').onclick=async()=>{try{library=normalizeLibrary((await localRead())||published);selectProject(library.activeProjectId);editing=true;dirty=false;dialog.close();render();toast('Đã bật chỉnh sửa bản xem thử.')}catch(e){error(e.message)}};
   $('#connect-form').onsubmit=async event=>{event.preventDefault();if(saving)return;const f=new FormData(event.currentTarget);const button=$('#connect-button');button.disabled=true;button.textContent='Đang kết nối…';$('#form-error').textContent='';saving=true;$('#close-dialog').disabled=true;let candidate;
-    try{candidate=new GitHubStore({owner:String(f.get('owner')).trim(),repo:String(f.get('repo')).trim(),branch:String(f.get('branch')).trim(),token:String(f.get('token')).trim()});const fresh=await candidate.load();store=candidate;library=normalizeLibrary(fresh);selectProject(library.activeProjectId);editing=true;config={owner:store.owner,repo:store.repo,branch:store.branch};$('#token').value='';dirty=false;dialog.close();render();toast('Đã kết nối GitHub. Bạn có thể đăng và sửa nội dung.')}catch(e){candidate?.disconnect();error(e.message)}finally{saving=false;$('#close-dialog').disabled=false;button.disabled=false;button.textContent='Kết nối GitHub ↗'}
+    try{candidate=new GitHubStore({owner:String(f.get('owner')).trim(),repo:String(f.get('repo')).trim(),branch:String(f.get('branch')).trim(),token:String(f.get('token')).trim()});const fresh=await candidate.load();store=candidate;library=normalizeLibrary(fresh);selectProject(library.activeProjectId);editing=true;config={owner:store.owner,repo:store.repo,branch:store.branch};$('#token').value='';dirty=false;dialog.close();render();toast('Đã kết nối GitHub. Bạn có thể đăng và sửa nội dung.')}catch(e){candidate?.disconnect();error(e.message)}finally{const tokenField=$('#token');if(tokenField)tokenField.value='';saving=false;$('#close-dialog').disabled=false;button.disabled=false;button.textContent='Kết nối GitHub ↗'}
   };
 }
 function downloadBackup(){const url=URL.createObjectURL(new Blob([JSON.stringify(library,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='project-journal-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
@@ -168,6 +168,8 @@ $('#menu-button').onclick=()=>{const open=$('#navigation').classList.toggle('ope
 window.addEventListener('hashchange',()=>{render();$('#navigation').classList.remove('open');$('#menu-button').setAttribute('aria-expanded','false');window.scrollTo({top:0,behavior:'instant'});syncBlogHeader();main.focus({preventScroll:true})});
 window.addEventListener('beforeunload',event=>{if(dirty||saving){event.preventDefault();event.returnValue=''}});
 async function start(){
+  // GitHub Pages cannot supply a frame-ancestors header: do not expose forms in an embedded page.
+  if(window.self!==window.top){const notice=document.createElement('p');notice.className='empty';notice.textContent='Hãy mở website trực tiếp để xem và quản lý nội dung. ';const link=document.createElement('a');link.textContent='Mở website ↗';link.href=location.origin+location.pathname;link.target='_blank';link.rel='noopener noreferrer';notice.append(link);document.body.replaceChildren(notice);return}
   if(!location.hash||location.hash==='#')history.replaceState(null,'',location.pathname+location.search+'#blog');
   try{const response=await fetch('./content.json',{cache:'no-store'});if(!response.ok)throw new Error('Không đọc được nội dung website.');published=await response.json();if(!validContent(published))throw new Error('Nội dung website chưa đúng định dạng.');library=normalizeLibrary(published);selectInitialProject();
     try{const r=await fetch('./config.json');if(r.ok){const c=await r.json();if(c.owner&&c.repo)config=c}}catch{}

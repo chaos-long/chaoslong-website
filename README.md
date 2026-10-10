@@ -110,3 +110,6 @@ Video nhúng dùng `referrerpolicy="strict-origin-when-cross-origin"` để YouT
 
 Sau khi kết nối quản trị, mở đúng dự án → Finish Work → **Đổi ảnh / video giới thiệu** ở khung bên phải. Chọn một ảnh/video hoặc nhập link YouTube, Vimeo, MP4/WebM/OGG; sửa chú thích rồi đăng. File/link mới thay hình trước. Gỡ file và lưu để trở về hình minh họa mặc định. Ảnh/video giới thiệu lưu riêng trong `finish.cover`, chú thích ở `finish.coverCaption`; giữ nguyên câu chuyện và các file đính kèm bên dưới, logo, blog và những dự án khác.
 Blog Home mở bằng ảnh bìa phủ toàn màn hình. Cuộn xuống hoặc bấm mũi tên để đến bài viết; menu cố định chuyển từ trong suốt sang nền đặc. Hiệu ứng chỉ áp dụng cho blog, và tôn trọng tùy chọn giảm chuyển động của thiết bị.
+
+## Bảo vệ quản trị
+Ngày bài blog chỉ hiển thị theo YYYY-MM-DD. Ứng dụng không mở trong iframe; dùng liên kết mở trực tiếp. Token được xóa khỏi ô nhập sau xác thực hoặc khi đóng hộp thoại; phiên kết nối chỉ giữ token trong bộ nhớ tab. API có token chỉ tới api.github.com, không theo chuyển hướng. Danh sách loại file không tra thuộc tính kế thừa. CSP cấm base URL, gửi form mặc định, inline event handler và worker. Kho public bao gồm dữ liệu Thùng rác và lịch sử; ẩn trên giao diện không làm nội dung riêng tư.

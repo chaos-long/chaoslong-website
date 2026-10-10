@@ -1,7 +1,7 @@
 import {personalDefaults} from './blog.mjs';
 export const MAX_FILE = 20 * 1024 * 1024;
 const allowedTypes = new Set(['image/jpeg','image/png','image/webp','image/gif','image/avif','video/mp4','video/webm','video/ogg']);
-export const documentTypes={pdf:'application/pdf',txt:'text/plain',md:'text/markdown',markdown:'text/markdown',csv:'text/csv',json:'application/json',doc:'application/msword',docx:'application/vnd.openxmlformats-officedocument.wordprocessingml.document',xls:'application/vnd.ms-excel',xlsx:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',ppt:'application/vnd.ms-powerpoint',pptx:'application/vnd.openxmlformats-officedocument.presentationml.presentation',zip:'application/zip'};
+export const documentTypes=Object.freeze(Object.assign(Object.create(null),{pdf:'application/pdf',txt:'text/plain',md:'text/markdown',markdown:'text/markdown',csv:'text/csv',json:'application/json',doc:'application/msword',docx:'application/vnd.openxmlformats-officedocument.wordprocessingml.document',xls:'application/vnd.ms-excel',xlsx:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',ppt:'application/vnd.ms-powerpoint',pptx:'application/vnd.openxmlformats-officedocument.presentationml.presentation',zip:'application/zip'}));
 const documentMime=new Set(Object.values(documentTypes));
 export function safeFileUrl(value){if(typeof value==='string'){const match=value.match(/^data:([^;]+);base64,[A-Za-z0-9+/=]+$/);if(match&&documentMime.has(match[1]))return value}return safeUrl(value)}
 export function safeUrl(value, {image=false}={}) {
@@ -50,13 +50,15 @@ export function normalizeLibrary(data){
 function utf8Base64(text){const bytes=new TextEncoder().encode(text);let binary='';for(let i=0;i<bytes.length;i+=8192)binary+=String.fromCharCode(...bytes.subarray(i,i+8192));return btoa(binary);}
 export class GitHubStore {
   constructor({owner,repo,branch,token,request=globalThis.fetch.bind(globalThis)}){
-    if(!/^[A-Za-z0-9-]+$/.test(owner)||!/^[A-Za-z0-9_.-]+$/.test(repo))throw new Error('Tên tài khoản hoặc repository không hợp lệ.');
+    if(!/^[A-Za-z0-9-]+$/.test(owner)||(!/^[A-Za-z0-9_.-]+$/.test(repo)||['.','..'].includes(repo)))throw new Error('Tên tài khoản hoặc repository không hợp lệ.');
     this.owner=owner;this.repo=repo;this.branch=branch;this.token=token;this.request=request;this.base=`https://api.github.com/repos/${owner}/${repo}`;this.mediaCache=new Map();this.outdatedHeads=new Set();this.adminVerified=false;
   }
   async api(path,method='GET',body){
     const url=new URL(`${this.base}${path}`);
+    const repositoryPath=`/repos/${this.owner}/${this.repo}`;
+    if(url.origin!=='https://api.github.com'||!(url.pathname===repositoryPath||url.pathname.startsWith(repositoryPath+'/')))throw new Error('Địa chỉ API GitHub không hợp lệ.');
     if(method==='GET')url.searchParams.set('_fresh',crypto.randomUUID());
-    const response=await this.request(url.href,{method,cache:'no-store',headers:{Accept:'application/vnd.github+json',Authorization:`Bearer ${this.token}`,'X-GitHub-Api-Version':'2026-03-10',...(body?{'Content-Type':'application/json'}:{})},...(body?{body:JSON.stringify(body)}:{})});
+    const response=await this.request(url.href,{method,cache:'no-store',redirect:'error',credentials:'omit',referrerPolicy:'no-referrer',headers:{Accept:'application/vnd.github+json',Authorization:`Bearer ${this.token}`,'X-GitHub-Api-Version':'2026-03-10',...(body?{'Content-Type':'application/json'}:{})},...(body?{body:JSON.stringify(body)}:{})});
     if(!response.ok){
       if(response.status===401)throw new Error('Token không hợp lệ hoặc đã hết hạn. Hãy kết nối lại.');
       if(response.status===403)throw new Error('GitHub từ chối thao tác. Kiểm tra quyền Contents: Read and write, hạn mức API và chính sách của repository.');
@@ -67,7 +69,8 @@ export class GitHubStore {
     return response.json();
   }
   async load(){
-    const identityResponse=await this.request('https://api.github.com/user',{method:'GET',cache:'no-store',headers:{Accept:'application/vnd.github+json',Authorization:`Bearer ${this.token}`,'X-GitHub-Api-Version':'2026-03-10'}});
+    this.adminVerified=false;
+    const identityResponse=await this.request('https://api.github.com/user',{method:'GET',cache:'no-store',redirect:'error',credentials:'omit',referrerPolicy:'no-referrer',headers:{Accept:'application/vnd.github+json',Authorization:`Bearer ${this.token}`,'X-GitHub-Api-Version':'2026-03-10'}});
     if(!identityResponse.ok)throw new Error('Không xác thực được tài khoản GitHub. Kiểm tra token và thời hạn.');
     const identity=await identityResponse.json();
     if(String(identity.login).toLowerCase()!=='chaos-long'||this.owner.toLowerCase()!=='chaos-long')throw new Error('Chỉ tài khoản chaos-long được quyền chỉnh sửa website này.');
