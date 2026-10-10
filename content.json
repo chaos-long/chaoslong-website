@@ -117,7 +117,14 @@
         "title": "Xin chào,\nđây là Nhóm 5 lớp 26C09 môn Nhập môn công nghệ thông tin.",
         "description": "Ghi lại quá trình khám phá, thiết kế và xây dựng sản phẩm của nhóm.",
         "note": "Mỗi ý tưởng đều có một hành trình.",
-        "logo": null
+        "logo": {
+          "id": "5b15bed9-1bfc-44e2-8388-b3855fec9b5c",
+          "type": "image",
+          "src": "media/846f1ce5-d2b6-430b-ac91-f6145ff93260.png",
+          "caption": "",
+          "name": "benkirb-five-9251730_1280.png",
+          "size": 146468
+        }
       },
       "team": [
         {
