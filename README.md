@@ -103,3 +103,5 @@ LaTeX dùng KaTeX 0.19.0 đóng gói trong assets/katex.mjs, xuất MathML để
 Markdown được xử lý bằng Marked 18.1.0: hỗ trợ bảng, danh sách lồng nhau, checkbox công việc, liên kết và ảnh bằng link HTTPS, đậm/nghiêng/gạch ngang, trích dẫn, các mức tiêu đề và khối code. HTML viết trực tiếp chỉ hiện thành chữ. Nút Nhập file .md nhận .md/.markdown/.txt tối đa 600 KB, cho chọn thêm cuối hoặc thay nội dung; có nút tải bản .md. Ảnh dùng đường dẫn file trong máy không tự đăng theo file Markdown, cần tải lên phần đính kèm hoặc dùng link ảnh HTTPS.
 
 File đính kèm: PDF, DOC/DOCX, XLS/XLSX, PPT/PPTX, TXT, MD, CSV, JSON, ZIP cùng ảnh/video; tối đa 20 MB/file, 40 MB/lần lưu. File lưu trên GitHub trong cùng lần đăng bài, hiện thành thẻ tải xuống. Giữ nguyên tên hiển thị và phần mở rộng. Không mở/chạy nội dung file trong trình soạn.
+
+Video nhúng dùng `referrerpolicy="strict-origin-when-cross-origin"` để YouTube nhận diện tên miền website và tránh lỗi 153. Các liên kết thông thường vẫn giữ chính sách không gửi referrer. Dưới video có liên kết mở trên YouTube/Vimeo nếu người xem muốn xem trực tiếp.
