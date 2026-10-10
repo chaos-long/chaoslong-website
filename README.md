@@ -1,8 +1,12 @@
 # Chaoslong's website
 
-Website ghi lại hành trình dự án với bốn phần: **Home**, **Team**, **Work**, **Finish Work**. Thiết kế nền tối, tím và xanh nhạt; minh họa SVG riêng. Forma là tên nhóm mẫu, có thể sửa trên website.
+Website ghi lại hành trình dự án với bốn phần: **Home**, **Team**, **Work**, **Finish Work**. Projects và Personal Blog dùng cùng bảng màu xanh, bố cục thoáng và thẻ nội dung; Home dùng chung ảnh nền với blog. Forma là tên nhóm mẫu, có thể sửa trên website.
 
 Website có hai không gian chuyển qua thanh trên cùng: **Projects** cho các dự án/nhóm, **Personal Blog** cho riêng chaos-long. Bài viết blog cá nhân lưu riêng với các báo cáo tuần.
+
+## Giao diện sáng / tối
+
+Nút **☾ Tối / ☀ Sáng** ở góc trên cùng đổi giao diện cho cả Projects, Personal Blog và các trình soạn. Lần đầu web dùng chế độ của thiết bị; sau khi chọn, lựa chọn được nhớ trong trình duyệt này. Khách cũng có thể đổi giao diện mà không cần đăng nhập. Lựa chọn này chỉ là cách hiển thị, không sửa nội dung hay đăng lên GitHub.
 
 ## Blog cá nhân và ảnh nền
 
