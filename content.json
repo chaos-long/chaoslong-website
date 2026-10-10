@@ -168,7 +168,15 @@
         "body": "## Vấn đề\n\n## Giải pháp\n\n## Kết quả và điều học được\n",
         "status": "Đang phát triển",
         "demoUrl": "",
-        "media": []
+        "media": [
+          {
+            "id": "6c324a13-070a-4128-8157-c79b9aac45d4",
+            "type": "embed",
+            "src": "https://www.youtube.com/watch?v=OqWwuPfIyeY",
+            "caption": "",
+            "name": "Video từ link"
+          }
+        ]
       }
     }
   ],
