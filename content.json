@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "activeProjectId": "cd943173-aa18-4cee-935f-c910abd61b6c",
+  "activeProjectId": "c2c5a865-63ec-44b8-9bc1-87bd88b58f11",
   "projects": [
     {
       "id": "project-forma",
@@ -91,6 +91,28 @@
         "name": "tmp",
         "eyebrow": "MỘT HÀNH TRÌNH MỚI",
         "title": "Xin chào,\nđây là tmp.",
+        "description": "Ghi lại quá trình khám phá, thiết kế và xây dựng sản phẩm của nhóm.",
+        "note": "Mỗi ý tưởng đều có một hành trình."
+      },
+      "team": [],
+      "posts": [],
+      "finish": {
+        "title": "Từ ý tưởng\nđến sản phẩm.",
+        "summary": "Thêm câu chuyện, hình ảnh và video demo khi sản phẩm sẵn sàng.",
+        "body": "## Vấn đề\n\n## Giải pháp\n\n## Kết quả và điều học được\n",
+        "status": "Đang phát triển",
+        "demoUrl": "",
+        "media": []
+      }
+    },
+    {
+      "id": "c2c5a865-63ec-44b8-9bc1-87bd88b58f11",
+      "createdAt": "2026-10-10",
+      "archived": false,
+      "project": {
+        "name": "Nhập môn công nghệ thông tin(lý thuyết)",
+        "eyebrow": "MỘT HÀNH TRÌNH MỚI",
+        "title": "Xin chào,\nđây là Nhập môn công nghệ thông tin(lý thuyết).",
         "description": "Ghi lại quá trình khám phá, thiết kế và xây dựng sản phẩm của nhóm.",
         "note": "Mỗi ý tưởng đều có một hành trình."
       },
