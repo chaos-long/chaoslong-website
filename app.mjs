@@ -1,6 +1,6 @@
 import {selectedProject,trashProject,restoreProject} from './assets/projects.mjs?v=20261010-trash';
 import {safeUrl,safeFileUrl,videoEmbed,readMediaFile,localRead,localWrite,validContent,normalizeLibrary,GitHubStore} from './storage.mjs?v=20261010-fresh-save-v2';
-import {blogPage,blogRows} from './blog.mjs?v=20261010-avatar';
+import {blogPage,blogRows} from './blog.mjs?v=20261010-fullscreen-blog';
 import {articleMarkup,setupWriter} from './assets/writer.mjs?v=20261010-editor';
 const isLocalPreview=['localhost','127.0.0.1','::1'].includes(location.hostname);
 let blogQuery='',blogFilter='',blogFilterType='';
@@ -43,6 +43,8 @@ function finish(){
   const visual=hasCover?mediaView([{...f.cover,caption:''}]):`<div class="product-window"><div class="window-dots">•••</div><div class="window-content"><img class="big-mark" src="${esc(projectLogo(data.project))}" alt=""><div class="mock-line"></div><div class="mock-line short"></div><div class="mock-blocks"><i></i><i></i><i></i></div></div></div>`;
   return `<section class="finish-hero"><div><span class="eyebrow">THE FINAL PIECE</span><h1>${esc(f.title)}</h1><span class="pill">${esc(f.status)}</span><p>${esc(f.summary)}</p><div class="actions">${link?`<a class="button" href="${esc(link)}" target="_blank" rel="noopener noreferrer">Mở sản phẩm ↗</a>`:''}${editButton('finish','Chỉnh sửa sản phẩm')}</div></div><div class="finish-visual${hasCover?' has-cover':''}">${visual}${caption?`<p class="finish-demo-note">${esc(caption)}</p>`:''}${editing?`<div class="finish-cover-actions">${editButton('finish-cover','Đổi ảnh / video giới thiệu')}</div>`:''}</div></section><section class="article"><div class="article-body">${textBody(f.body)}</div>${mediaView(f.media)}</section>`;
 }
+function syncBlogHeader(){document.body.classList.toggle('blog-scrolled',document.body.classList.contains('blog-mode')&&window.scrollY>24)}
+window.addEventListener('scroll',syncBlogHeader,{passive:true});
 function render(){
   const [page,encodedId]=(location.hash.slice(1)||'blog').split('/');let id;try{id=decodeURIComponent(encodedId||'')}catch{id=''}
   document.querySelectorAll('#navigation a').forEach(a=>{if(a.hash===`#${page}`)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
@@ -50,6 +52,7 @@ function render(){
   for(const [selector,active] of [['#space-projects',!isBlog],['#space-blog',isBlog]]){if(active)$(selector).setAttribute('aria-current','page');else $(selector).removeAttribute('aria-current')}
   main.innerHTML=isBlog?blogPage({personal:library.personal,section:id,editing,source,body:textBody,media:mediaView,query:blogQuery,filter:blogFilter,filterType:blogFilterType}):data.placeholder?`<section class="page-heading"><div><span class="eyebrow">PROJECTS</span><h1>Chưa có dự án đang hiển thị.</h1><p>Bạn có thể tạo dự án mới hoặc khôi phục dự án đã xóa trong phần quản lý.</p><button class="button secondary" data-action="projects">Mở danh sách dự án ↗</button></div></section>`:page==='team'?team():page==='work'?(id?article(id):work()):page==='finish'?finish():home();
   $('#project-logo').src=projectLogo(data.project);$('#project-switch').textContent=(data.archived?'Đã lưu trữ · ':'')+'Dự án ⌄';$('#brand-name').textContent=data.project.name+'.';$('.footer-brand').textContent=data.project.name+'.';document.title=page==='blog'?`${library.personal.name} — Personal Blog`:`${data.project.name} — ${({team:'Team',work:'Work',finish:'Finish Work'})[page]||'Home'}`;
+  syncBlogHeader();
   $('#editor-bar').hidden=!editing;
   $('#editor-bar').innerHTML=`<span>${store?`Đã kết nối ${esc(store.owner)}/${esc(store.repo)}`:'Bản xem thử · Thay đổi chỉ lưu trên trình duyệt này'}</span><button class="quiet" data-action="manage">${store?'Quản lý kết nối':'Kết nối GitHub để đăng thật'} ↗</button>`;
 }
@@ -151,6 +154,7 @@ function changeProjectDeletion(id,restore=false){
   attachForm(async()=>{const next=restore?restoreProject(library,id):trashProject(library,id);const selected=next.projects.some(project=>project.id===data.id&&!project.deletedAt)?data.id:next.activeProjectId;if(await persistLibrary(next,restore?'Restore deleted project':'Move project to trash',selected))projectCatalog()});
 }
 document.addEventListener('click',event=>{
+  if(event.target.closest('[data-blog-scroll]')){const board=$('#blog-content');if(board)board.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});return}
   const copy=event.target.closest('[data-copy-code]');if(copy){const code=copy.closest('.code-block').querySelector('code').textContent;navigator.clipboard.writeText(code).then(()=>toast('Đã sao chép code.')).catch(()=>toast('Chưa sao chép được. Bạn có thể chọn và sao chép đoạn code.'));return}
   const action=event.target.closest('[data-action]');if(action){const type=action.dataset.action,id=action.dataset.id;if(type==='manage')management();else if(type==='projects')projectCatalog();else if(type==='select-project'){selectProject(id);dirty=false;dialog.close();location.hash='home';render()}else if(editing&&!saving){if(type==='personal-post')editPersonalPost(id);if(type==='blog-profile')editBlogProfile();if(type==='blog-avatar')editBlogAvatar();if(type==='delete-personal-post')deletePersonalPost(id);if(type==='new-project')newProject();if(type==='archive-project')archiveProject(id);if(type==='trash-project')changeProjectDeletion(id);if(type==='restore-trash-project')changeProjectDeletion(id,true);if(type==='project')editProject();if(type==='member')editMember(id);if(type==='post')editPost(id);if(type==='finish')editFinish();if(type==='finish-cover')editFinishCover();if(type==='delete-post')deleteItem('post',id);if(type==='delete-member')deleteItem('member',id)}}
   const blogFilterButton=event.target.closest('[data-blog-filter]');if(blogFilterButton){blogFilter=blogFilterButton.dataset.blogFilter;blogFilterType=blogFilterButton.dataset.filterType;blogQuery='';location.hash='blog';render()}
@@ -161,7 +165,7 @@ main.addEventListener('input',event=>{if(event.target.id==='search'){search=even
 $('#project-switch').onclick=projectCatalog;$('#manage').onclick=management;$('#close-dialog').onclick=closeModal;
 dialog.addEventListener('input',()=>{dirty=true});dialog.addEventListener('cancel',event=>{event.preventDefault();closeModal()});
 $('#menu-button').onclick=()=>{const open=$('#navigation').classList.toggle('open');$('#menu-button').setAttribute('aria-expanded',String(open))};
-window.addEventListener('hashchange',()=>{render();$('#navigation').classList.remove('open');$('#menu-button').setAttribute('aria-expanded','false');window.scrollTo({top:0});main.focus({preventScroll:true})});
+window.addEventListener('hashchange',()=>{render();$('#navigation').classList.remove('open');$('#menu-button').setAttribute('aria-expanded','false');window.scrollTo({top:0,behavior:'instant'});syncBlogHeader();main.focus({preventScroll:true})});
 window.addEventListener('beforeunload',event=>{if(dirty||saving){event.preventDefault();event.returnValue=''}});
 async function start(){
   if(!location.hash||location.hash==='#')history.replaceState(null,'',location.pathname+location.search+'#blog');

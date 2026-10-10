@@ -6,3 +6,29 @@
 :root[data-theme=dark] .blog-shade{background:linear-gradient(#0c1a2b70,#0d192838 45%,#0e192879)}:root[data-theme=dark] .project-shade{background:linear-gradient(90deg,#0b1a2ac9,#0b1a2a80 65%,#0b1a2a99)}
 @media(max-width:600px){.space-bar{padding:10px 16px}.space-bar nav{gap:12px}.space-controls{gap:12px}}
 .space-bar{background:var(--top);color:#b8c7da}.space-brand{color:#b8c7da}.space-bar nav a[aria-current]{color:#fff}.space-bar nav a[aria-current]:before{color:#b1d4f5}
+
+/* Fullscreen opening cover and navigation that stays above the scrolling blog. */
+.blog-mode{--blog-space-height:42px;--blog-nav-height:78px}
+.blog-mode .space-bar{position:fixed;inset:0 0 auto;z-index:41;height:var(--blog-space-height);min-height:0;background:transparent;border-color:#ffffff24;transition:background .25s ease}
+.blog-nav-shell{position:fixed;inset:var(--blog-space-height) 0 auto;z-index:40;background:transparent;transition:background .25s ease,box-shadow .25s ease}
+.blog-nav-shell .blog-nav{height:var(--blog-nav-height);border:0;padding-top:18px;padding-bottom:18px}
+.blog-mode.blog-scrolled .space-bar,.blog-mode.blog-scrolled .blog-nav-shell{background:var(--top)}
+.blog-mode.blog-scrolled .blog-nav-shell{box-shadow:0 4px 18px #10203124}
+.blog-mode .editor-bar{position:absolute;top:calc(var(--blog-space-height) + var(--blog-nav-height));left:0;right:0;z-index:5}
+.blog-mode .blog-hero:not(.compact){height:100vh;height:100svh;max-height:none;min-height:440px}
+.blog-mode .blog-hero.compact{height:430px;min-height:370px}
+.blog-hero-copy{top:50%;transform:translateY(-50%)}
+.blog-hero.compact .blog-hero-copy{top:62%}
+.blog-down{position:absolute;z-index:2;bottom:28px;left:50%;transform:translateX(-50%);margin:0;padding:0 15px 6px;background:transparent;border:0;color:white;cursor:pointer;font-size:42px;line-height:1;text-shadow:0 2px 8px #10203180;animation:blog-scroll-cue 2s ease-in-out infinite}
+.blog-down:focus-visible{outline:2px solid white;outline-offset:6px;border-radius:4px}
+.blog-board{margin-top:-72px;scroll-margin-top:calc(var(--blog-space-height) + var(--blog-nav-height) + 20px)}
+@keyframes blog-scroll-cue{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,7px)}}
+@media(max-width:900px){.blog-board{margin-top:-60px}}
+@media(max-width:600px){.blog-mode{--blog-space-height:46px;--blog-nav-height:104px}.blog-nav-shell .blog-nav{padding:15px 20px;gap:14px}.blog-mode .blog-hero.compact{height:400px;min-height:380px}.blog-board{margin-top:-35px}.blog-down{bottom:55px}.blog-hero-copy{left:24px;right:24px}}
+@media(prefers-reduced-motion:reduce){.blog-down{animation:none}.blog-nav-shell,.blog-mode .space-bar{transition:none}}
+
+/* Keep the article board below the first viewport, then overlap the cover as it enters. */
+.blog-mode .blog-hero:not(.compact){margin-bottom:72px}
+.blog-hero:not(.compact) .blog-cover,.blog-hero:not(.compact) .blog-shade{height:calc(100% + 72px)}
+@media(max-width:900px){.blog-mode .blog-hero:not(.compact){margin-bottom:60px}.blog-hero:not(.compact) .blog-cover,.blog-hero:not(.compact) .blog-shade{height:calc(100% + 60px)}}
+@media(max-width:600px){.blog-mode .blog-hero:not(.compact){margin-bottom:35px}.blog-hero:not(.compact) .blog-cover,.blog-hero:not(.compact) .blog-shade{height:calc(100% + 35px)}}
