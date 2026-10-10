@@ -87,7 +87,9 @@ Dùng một HTTP static server ở thư mục mã nguồn, ví dụ `python -m h
 
 Trong Personal Blog → Về mình, sau khi kết nối quản trị, bấm Đổi avatar → tải ảnh → Đăng lên GitHub. Có thể gỡ để dùng avatar chữ mặc định. Avatar lưu riêng, giữ nguyên ảnh nền, bài viết và các dự án.
 
-Home dùng ảnh cháo lòng do chủ website cung cấp ở assets/chaoslong.jpg, đặt trong khung trắng với viền xanh dịu phù hợp cả chế độ sáng và tối.
+Trang mặc định là Personal Blog. Bấm Projects để vào các dự án; link #home vẫn mở thẳng Home của dự án. Ảnh nền blog chỉ hiển thị trong blog.
+
+Home của Projects dùng nền trơn, ảnh cháo lòng do chủ website cung cấp ở assets/chaoslong.jpg ở giữa và ba mũi tên cong nối tới Team, Work, Finish Work. Mặt nạ SVG làm nền trắng quanh ảnh trong suốt để hòa với cả chế độ sáng và tối; ảnh gốc được giữ nguyên.
 
 ## Trình soạn bài và LaTeX
 
