@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 2,
+  "activeProjectId": "project-forma",
+  "projects": [
+    {
+      "id": "project-forma",
+      "archived": false,
+      "createdAt": "2026-10-10",
+      "project": {
+        "name": "forma",
+        "eyebrow": "Ý TƯỞNG → THỬ NGHIỆM → SẢN PHẨM",
+        "title": "Xin chào,\nchúng mình là Forma.",
+        "description": "Một nhóm nhỏ, những ý tưởng lớn. Đây là nơi chúng mình ghi lại quá trình khám phá, thiết kế và biến ý tưởng thành một sản phẩm có ý nghĩa.",
+        "note": "Nội dung mẫu · Hãy kể câu chuyện của nhóm bạn."
+      },
+      "team": [
+        {
+          "id": "member-1",
+          "name": "Thành viên 01",
+          "role": "Research & Strategy",
+          "bio": "Khám phá vấn đề, lắng nghe người dùng và tìm ra những câu hỏi đáng để theo đuổi.",
+          "photo": "",
+          "color": "lavender"
+        },
+        {
+          "id": "member-2",
+          "name": "Thành viên 02",
+          "role": "Design & Experience",
+          "bio": "Kết nối insight với ý tưởng, rồi biến chúng thành những trải nghiệm dễ sử dụng.",
+          "photo": "",
+          "color": "green"
+        },
+        {
+          "id": "member-3",
+          "name": "Thành viên 03",
+          "role": "Development",
+          "bio": "Biến bản phác thảo thành sản phẩm, thử nghiệm và cải tiến từng chi tiết.",
+          "photo": "",
+          "color": "peach"
+        }
+      ],
+      "posts": [
+        {
+          "id": "week-3",
+          "week": 3,
+          "title": "Từ ý tưởng đến bản phác thảo đầu tiên",
+          "date": "2026-10-10",
+          "category": "Design",
+          "summary": "Đặt các hướng giải quyết lên bàn, thử những ý tưởng đầu tiên và tìm một hướng đi chung.",
+          "body": "## Những gì đã làm\nCùng nhau phác thảo các hướng giải quyết và chọn một ý tưởng để phát triển thành prototype.\n\n## Điều học được\nMột bản phác thảo đơn giản giúp cả nhóm trao đổi dễ hơn rất nhiều.\n\n## Tuần tiếp theo\nXây dựng prototype và thử nghiệm với người dùng.\n\nĐây là bài viết mẫu. Bạn có thể chỉnh sửa hoặc xóa để bắt đầu hành trình thật của nhóm.",
+          "media": [],
+          "demo": true
+        },
+        {
+          "id": "week-2",
+          "week": 2,
+          "title": "Lắng nghe trước khi thiết kế",
+          "date": "2026-10-03",
+          "category": "Research",
+          "summary": "Chuẩn bị câu hỏi nghiên cứu và lên kế hoạch tìm hiểu nhu cầu của người dùng.",
+          "body": "## Những gì đã làm\nXây dựng bộ câu hỏi phỏng vấn và xác định nhóm người dùng mục tiêu.\n\n## Tuần tiếp theo\nThực hiện phỏng vấn và tổng hợp insight.\n\nĐây là bài viết mẫu, chưa phải kết quả nghiên cứu thực tế.",
+          "media": [],
+          "demo": true
+        },
+        {
+          "id": "week-1",
+          "week": 1,
+          "title": "Bắt đầu bằng một câu hỏi",
+          "date": "2026-09-26",
+          "category": "Planning",
+          "summary": "Làm quen với đề tài, thống nhất mục tiêu và vẽ bản đồ cho hành trình phía trước.",
+          "body": "## Những gì đã làm\nCả nhóm thống nhất mục tiêu ban đầu, phân chia vai trò và lập kế hoạch làm việc.\n\n## Tuần tiếp theo\nTìm hiểu người dùng và bối cảnh sử dụng sản phẩm.\n\nĐây là bài viết mẫu để minh họa cách ghi báo cáo tuần.",
+          "media": [],
+          "demo": true
+        }
+      ],
+      "finish": {
+        "title": "Một ý tưởng.\nMột sản phẩm thực sự.",
+        "summary": "Nơi hành trình của nhóm được kết nối thành một sản phẩm hoàn chỉnh. Thêm câu chuyện, hình ảnh và video demo khi bạn sẵn sàng.",
+        "body": "## Vấn đề chúng mình giải quyết\nMô tả vấn đề, người dùng và lý do nhóm lựa chọn đề tài.\n\n## Giải pháp của nhóm\nTrình bày sản phẩm, các tính năng chính và giá trị mang lại.\n\n## Những điều học được\nChia sẻ kết quả thử nghiệm, hạn chế và hướng phát triển tiếp theo.",
+        "demoUrl": "",
+        "media": [],
+        "status": "Đang phát triển"
+      }
+    }
+  ],
+  "personal": {
+    "name": "Chaoslong's blog",
+    "headline": "Đi một chút. Học một chút. Viết lại một chút.",
+    "bio": "Một góc nhỏ để lưu lại những điều mình học, những ý tưởng đang thử và vài câu chuyện trên đường đi.",
+    "about": "## Xin chào, mình là chaos-long.\nĐây là blog cá nhân của mình, bên cạnh không gian dành cho các dự án và đội ngũ.\n\n## Mình viết về\n- Những điều đang học\n- Ghi chú, thử nghiệm và ý tưởng\n- Những câu chuyện mình muốn lưu lại\n\nNội dung giới thiệu này là mẫu. Bạn có thể sửa thành câu chuyện của riêng mình.",
+    "cover": "assets/blog-cover.jpg",
+    "photo": "",
+    "posts": [
+      {
+        "id": "personal-first-note",
+        "title": "Một nơi để lưu lại những điều nhỏ bé",
+        "date": "2026-10-10",
+        "category": "Notes",
+        "tags": [
+          "nhật ký",
+          "bắt đầu"
+        ],
+        "summary": "Không cần chờ đến lúc hoàn thành một điều thật lớn mới bắt đầu viết.",
+        "body": "## Bắt đầu từ một trang trắng\nĐây là một bài viết mẫu cho blog cá nhân. Bạn có thể thay bằng ghi chú, nhật ký hoặc một điều vừa học được.\n\n## Những điều muốn giữ lại\n- Một ý tưởng chưa hoàn chỉnh\n- Một thử nghiệm thú vị\n- Một bài học nhỏ trong ngày\n\nViết để nhớ, và để nhìn thấy mình đã đi xa đến đâu.",
+        "media": [],
+        "demo": true
+      },
+      {
+        "id": "personal-learning",
+        "title": "Học, thử, rồi ghi lại",
+        "date": "2026-10-03",
+        "category": "Learning",
+        "tags": [
+          "học tập",
+          "ghi chú"
+        ],
+        "summary": "Một chỗ cho những câu hỏi chưa có đáp án và những thử nghiệm đầu tiên.",
+        "body": "## Một ghi chú học tập\nChia sẻ vấn đề, cách bạn tiếp cận và điều bạn rút ra. Đây là nội dung mẫu, không phải thành tích hay trải nghiệm thực tế của chủ blog.\n\n## Mẫu ghi chú\n- Câu hỏi ban đầu\n- Tài liệu đã đọc\n- Cách thử nghiệm\n- Kết quả và bước tiếp theo",
+        "media": [],
+        "demo": true
+      }
+    ]
+  }
+}
