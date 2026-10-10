@@ -168,7 +168,15 @@
         "body": "## Vấn đề\n\n## Giải pháp\n\n## Kết quả và điều học được\n",
         "status": "Đang phát triển",
         "demoUrl": "",
-        "media": []
+        "media": [],
+        "cover": {
+          "id": "1dec2883-4970-4e79-b7f7-28f692e4cf32",
+          "type": "embed",
+          "src": "https://www.youtube.com/watch?v=OXvnZ2a8Vqw&t=3057s",
+          "caption": "",
+          "name": "Video từ link"
+        },
+        "coverCaption": "Không gian cho sản phẩm của bạn"
       }
     }
   ],
