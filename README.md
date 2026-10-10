@@ -54,6 +54,8 @@ Không cần cài thư viện hoặc chạy build. Các đường dẫn tương 
 3. Để đăng thật, dùng **Kết nối GitHub**. Tạo fine-grained personal access token trong cài đặt GitHub, chỉ chọn repository này, quyền **Contents: Read and write**, đặt thời hạn. Nhập token trực tiếp vào website, không gửi qua chat. Nếu repo thuộc tổ chức, token có thể cần phê duyệt theo chính sách tổ chức.
 4. Kết nối xong, dùng các nút **Chỉnh sửa**, **Thêm thành viên**, **Viết báo cáo tuần**. Nút **Đăng lên GitHub** tạo một commit chứa nội dung và media. Chờ workflow Pages hoàn thành để khách thấy thay đổi.
 
+Có thể lưu nhiều chỉnh sửa liên tiếp trong cùng phiên kết nối. Các lần kiểm tra phiên bản nội dung trên GitHub bỏ qua bộ nhớ đệm HTTP để tránh báo xung đột với chính lần lưu trước. Nếu nội dung thực sự thay đổi ở một phiên khác, website vẫn chặn ghi đè.
+
 Token chỉ giữ trong bộ nhớ tab, chỉ gửi tới API GitHub, không nằm trong mã nguồn, localStorage, IndexedDB hay bản sao nội dung. Tải lại trang hoặc ngắt kết nối sẽ xóa phiên. Người xem chưa kết nối không có quyền ghi vào repository. Token của tài khoản khác chaos-long bị từ chối trước khi tải nội dung quản trị.
 
 ## Ảnh và video

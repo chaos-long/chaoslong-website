@@ -1,4 +1,4 @@
-import {safeUrl,safeFileUrl,videoEmbed,readMediaFile,localRead,localWrite,validContent,normalizeLibrary,GitHubStore} from './storage.mjs?v=20261010-files';
+import {safeUrl,safeFileUrl,videoEmbed,readMediaFile,localRead,localWrite,validContent,normalizeLibrary,GitHubStore} from './storage.mjs?v=20261010-session-save';
 import {blogPage,blogRows} from './blog.mjs?v=20261010-avatar';
 import {articleMarkup,setupWriter} from './assets/writer.mjs?v=20261010-editor';
 const isLocalPreview=['localhost','127.0.0.1','::1'].includes(location.hostname);

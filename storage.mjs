@@ -54,7 +54,7 @@ export class GitHubStore {
     this.owner=owner;this.repo=repo;this.branch=branch;this.token=token;this.request=request;this.base=`https://api.github.com/repos/${owner}/${repo}`;this.mediaCache=new Map();this.adminVerified=false;
   }
   async api(path,method='GET',body){
-    const response=await this.request(`${this.base}${path}`,{method,headers:{Accept:'application/vnd.github+json',Authorization:`Bearer ${this.token}`,'X-GitHub-Api-Version':'2026-03-10',...(body?{'Content-Type':'application/json'}:{})},...(body?{body:JSON.stringify(body)}:{})});
+    const response=await this.request(`${this.base}${path}`,{method,cache:'no-store',headers:{Accept:'application/vnd.github+json',Authorization:`Bearer ${this.token}`,'X-GitHub-Api-Version':'2026-03-10',...(body?{'Content-Type':'application/json'}:{})},...(body?{body:JSON.stringify(body)}:{})});
     if(!response.ok){
       if(response.status===401)throw new Error('Token không hợp lệ hoặc đã hết hạn. Hãy kết nối lại.');
       if(response.status===403)throw new Error('GitHub từ chối thao tác. Kiểm tra quyền Contents: Read and write, hạn mức API và chính sách của repository.');
@@ -65,7 +65,7 @@ export class GitHubStore {
     return response.json();
   }
   async load(){
-    const identityResponse=await this.request('https://api.github.com/user',{method:'GET',headers:{Accept:'application/vnd.github+json',Authorization:`Bearer ${this.token}`,'X-GitHub-Api-Version':'2026-03-10'}});
+    const identityResponse=await this.request('https://api.github.com/user',{method:'GET',cache:'no-store',headers:{Accept:'application/vnd.github+json',Authorization:`Bearer ${this.token}`,'X-GitHub-Api-Version':'2026-03-10'}});
     if(!identityResponse.ok)throw new Error('Không xác thực được tài khoản GitHub. Kiểm tra token và thời hạn.');
     const identity=await identityResponse.json();
     if(String(identity.login).toLowerCase()!=='chaos-long'||this.owner.toLowerCase()!=='chaos-long')throw new Error('Chỉ tài khoản chaos-long được quyền chỉnh sửa website này.');
@@ -81,6 +81,7 @@ export class GitHubStore {
     if(!this.adminVerified)throw new Error('Cần xác thực tài khoản quản trị chaos-long trước khi lưu.');
     if(this.busy)throw new Error('Đang lưu một thay đổi khác.');this.busy=true;
     try{
+      // Read fresh GitHub revisions: cached refs can still point to our previous save.
       // Compare the content revision before uploading; advance the branch atomically after all blobs exist.
       const ref=await this.api(`/git/ref/heads/${encodeURIComponent(this.branch)}`);
       const head=await this.api(`/git/commits/${ref.object.sha}`);
