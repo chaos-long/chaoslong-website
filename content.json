@@ -212,7 +212,7 @@
     "name": "Chaoslong's blog",
     "headline": "Đi một chút. Học một chút. Viết lại một chút.",
     "bio": "Một góc nhỏ để lưu lại những điều mình học, những ý tưởng đang thử và vài câu chuyện trên đường đi.",
-    "about": "## Xin chào, mình là chaos-long.\nĐây là blog cá nhân của mình, bên cạnh không gian dành cho các dự án và đội ngũ.\n\n## Mình viết về\n- Những điều đang học\n- Ghi chú, thử nghiệm và ý tưởng\n- Những câu chuyện mình muốn lưu lại\n\nNội dung giới thiệu này là mẫu. Bạn có thể sửa thành câu chuyện của riêng mình.",
+    "about": "## Xin chào, mình là chaoslong.\nĐây là blog cá nhân của mình.\n\n## Đây là nơi\n- Viết writeup cho các problem ctf\n- Tâm sự cá nhân\n- chia sẻ kiến thức",
     "cover": "assets/blog-cover.jpg",
     "photo": "media/ac903cd8-d446-4c29-a39c-cf400121d503.jpg",
     "posts": [
