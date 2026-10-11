@@ -229,20 +229,6 @@
         "body": "## Bắt đầu từ một trang trắng\nĐây là một bài viết mẫu cho blog cá nhân. Bạn có thể thay bằng ghi chú, nhật ký hoặc một điều vừa học được.\n\n## Những điều muốn giữ lại\n- Một ý tưởng chưa hoàn chỉnh\n- Một thử nghiệm thú vị\n- Một bài học nhỏ trong ngày\n\nViết để nhớ, và để nhìn thấy mình đã đi xa đến đâu.",
         "media": [],
         "demo": true
-      },
-      {
-        "id": "personal-learning",
-        "title": "Học, thử, rồi ghi lại",
-        "date": "2026-10-03",
-        "category": "Learning",
-        "tags": [
-          "học tập",
-          "ghi chú"
-        ],
-        "summary": "Một chỗ cho những câu hỏi chưa có đáp án và những thử nghiệm đầu tiên.",
-        "body": "## Một ghi chú học tập\nChia sẻ vấn đề, cách bạn tiếp cận và điều bạn rút ra. Đây là nội dung mẫu, không phải thành tích hay trải nghiệm thực tế của chủ blog.\n\n## Mẫu ghi chú\n- Câu hỏi ban đầu\n- Tài liệu đã đọc\n- Cách thử nghiệm\n- Kết quả và bước tiếp theo",
-        "media": [],
-        "demo": true
       }
     ]
   }
