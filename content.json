@@ -215,21 +215,6 @@
     "about": "## Xin chào, mình là chaoslong.\nĐây là blog cá nhân của mình.\n\n## Đây là nơi\n- Viết writeup cho các problem ctf\n- Tâm sự cá nhân\n- chia sẻ kiến thức",
     "cover": "assets/blog-cover.jpg",
     "photo": "media/ac903cd8-d446-4c29-a39c-cf400121d503.jpg",
-    "posts": [
-      {
-        "id": "personal-first-note",
-        "title": "Một nơi để lưu lại những điều nhỏ bé",
-        "date": "2026-10-10",
-        "category": "Notes",
-        "tags": [
-          "nhật ký",
-          "bắt đầu"
-        ],
-        "summary": "Không cần chờ đến lúc hoàn thành một điều thật lớn mới bắt đầu viết.",
-        "body": "## Bắt đầu từ một trang trắng\nĐây là một bài viết mẫu cho blog cá nhân. Bạn có thể thay bằng ghi chú, nhật ký hoặc một điều vừa học được.\n\n## Những điều muốn giữ lại\n- Một ý tưởng chưa hoàn chỉnh\n- Một thử nghiệm thú vị\n- Một bài học nhỏ trong ngày\n\nViết để nhớ, và để nhìn thấy mình đã đi xa đến đâu.",
-        "media": [],
-        "demo": true
-      }
-    ]
+    "posts": []
   }
 }
