@@ -218,7 +218,16 @@
         "description": "ĐỒ ÁN CUỐI KỲ (HK1-2627)",
         "note": "Mỗi ý tưởng đều có một hành trình."
       },
-      "team": [],
+      "team": [
+        {
+          "id": "f5a54c35-200f-448f-8eb3-7adb47ce1f9b",
+          "name": "Mohamad Arif-26127033",
+          "role": "Thành viên",
+          "bio": "",
+          "photo": "",
+          "color": "lavender"
+        }
+      ],
       "posts": [],
       "finish": {
         "title": "Từ ý tưởng\nđến sản phẩm.",
