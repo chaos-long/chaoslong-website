@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "activeProjectId": "c2c5a865-63ec-44b8-9bc1-87bd88b58f11",
+  "activeProjectId": "7c08ed84-5616-4dea-9158-63c377a93887",
   "projects": [
     {
       "id": "project-forma",
@@ -205,6 +205,28 @@
           "name": "Video từ link"
         },
         "coverCaption": "This shit is fire"
+      }
+    },
+    {
+      "id": "7c08ed84-5616-4dea-9158-63c377a93887",
+      "createdAt": "2026-10-14",
+      "archived": false,
+      "project": {
+        "name": "Nhóm 1(Kỹ năng mềm)",
+        "eyebrow": "MỘT HÀNH TRÌNH MỚI",
+        "title": "Xin chào,\nđây là Nhóm 1(Kỹ năng mềm).",
+        "description": "ĐỒ ÁN CUỐI KỲ (HK1-2627)",
+        "note": "Mỗi ý tưởng đều có một hành trình."
+      },
+      "team": [],
+      "posts": [],
+      "finish": {
+        "title": "Từ ý tưởng\nđến sản phẩm.",
+        "summary": "Thêm câu chuyện, hình ảnh và video demo khi sản phẩm sẵn sàng.",
+        "body": "## Vấn đề\n\n## Giải pháp\n\n## Kết quả và điều học được\n",
+        "status": "Đang phát triển",
+        "demoUrl": "",
+        "media": []
       }
     }
   ],
