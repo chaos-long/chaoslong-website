@@ -252,7 +252,19 @@
           "color": "lavender"
         }
       ],
-      "posts": [],
+      "posts": [
+        {
+          "id": "4827c242-01ee-4107-8517-40f313475e04",
+          "week": 5,
+          "title": "Biên bản thành lập nhóm",
+          "date": "2026-11-03",
+          "category": "Planning",
+          "summary": "Mục tiêu và thành viên nhóm",
+          "body": "# BIÊN BẢN THÀNH LẬP NHÓM\n\nTài liệu này ghi nhận lại nội dung và kết quả của một buổi họp thành lập nhóm.\n\n**Khoa Công nghệ thông tin**  \n**Đại học Khoa học tự nhiên TP HCM**\n\n---\n\n## 1. Thông tin chung\n\n*   **Tên nhóm:** Nhóm 5\n*   **Mã nhóm:** 26C09-N5\n\n**Các thành viên tham gia nhóm:**\n\n| STT | MSSV | Họ và tên | Email | SĐT | Vai trò trong nhóm | Ký tên |\n| :---: | :--- | :--- | :--- | :--- | :--- | :--- |\n| 1 | 26127247 | Trần Anh Kỳ | taky2615@clc.fitus.edu.vn | 0395657368 | Thư ký | |\n| 2 | 26127446 | Huỳnh Đăng Thức | hdthuc2602@clc.fitus.edu.vn | 0898810522 | Trưởng nhóm | |\n| 3 | 26127465 | Lê Khả Toàn | lktoan2605@clc.fitus.edu.vn | 0368760340 | Thành viên | |\n| 4 | 26127082 | Đinh Việt Đức | dvduc2633@clc.fitus.edu.vn | 0369808276 | Phó nhóm | |\n| 5 | 26127188 | Nguyễn Ngọc Như Huỳnh | nnnhuynh2629@clc.fitus.edu.vn | 0353020471 | Thành viên | |\n\n**Mục tiêu lập nhóm nhằm:**\n1.  Thực hiện đồ án 1 và 2\n2.  Hoàn thành xuất sắc môn Nhập môn Công nghệ Thông Tin\n\n*   **Địa điểm:** Trường Đại học Khoa học Tự nhiên, ĐHQG-HCM\n*   **Thời gian:** 8:45 AM, 3/11/2026\n\n---\n\n## 2. Kết quả buổi họp\n\n*   **Nguyên tắc làm việc của nhóm:** Tự nguyện, đoàn kết và tin tưởng lẫn nhau.\n\n*   **Các phân công, phân nhiệm của các thành viên:**\n    *   **Trưởng nhóm:** Huỳnh Đăng Thức\n    *   **Phó nhóm:** Đinh Việt Đức\n    *   **Thư ký:** Trần Anh Kỳ\n\n*   **Thống nhất đề tài:** \n    *   Đề tài của Project 1: Đề tài số 5.\n*   **Định hướng công việc trong tương lai.**",
+          "media": [],
+          "demo": false
+        }
+      ],
       "finish": {
         "title": "Từ ý tưởng\nđến sản phẩm.",
         "summary": "Thêm câu chuyện, hình ảnh và video demo khi sản phẩm sẵn sàng.",
