@@ -252,7 +252,389 @@
           "color": "lavender"
         }
       ],
-      "posts": [],
+      "posts": [
+        {
+          "id": "e139b526-5302-48bb-a7e8-31a7021cc528",
+          "week": 5,
+          "title": "Báo cáo kiểm thử sản phẩm",
+          "date": "2026-11-04",
+          "category": "Testing",
+          "summary": "Kết quả kiểm thử và bằng chứng",
+          "body": "# Thực nghiệm 40 ảnh trên máy chủ Tem Vân Giấy\n\nThời điểm: 04/11/2026, giờ Việt Nam. Máy chủ https://tem-van-giay.onrender.com, API version 0.6.0, số mẫu máy chủ báo 33, ngưỡng 0.64, khoảng cách 0.08.\n\nSố yêu cầu đã ghi: 40/40. Các trường hợp lỗi, không đủ điều kiện hoặc mơ hồ được tách khỏi kết luận nhận nhầm.\n\n## Kết quả\n\n| Nhóm | Kết quả | Số lượng |\n|---|---|---:|\n| chua_dk | khong nhan | 10 |\n| da_dk | dung | 30 |\n\n## Cách thử và giới hạn\n\nMỗi ảnh được xoay theo EXIF, thu nhỏ cạnh dài tối đa 1.200 pixel và nén JPEG chất lượng 90 bằng Pillow, gửi lần lượt tới API /api/match với tự tìm viền và explain=false. Cách tiền xử lý gần giống giao diện web, không bảo đảm từng pixel giống trình duyệt. API và dữ liệu tham chiếu là trên máy chủ thật; đây là thử API, không phải thao tác hoặc ảnh chụp màn hình trình duyệt.\n\nTên ảnh đã đăng ký được đối chiếu với mã N01-MAU-001 đến N01-MAU-030 theo lần nhập trước. 30 ảnh da_dk trùng nội dung với ảnh gốc trong ZIP Nhóm 01: đây là thử lại ảnh nguồn đã đăng ký, không phải 30 lần chụp mới độc lập. 10 ảnh chua_dk theo thông tin người dùng là chưa đăng ký. Không suy rộng số liệu thành tỷ lệ chính xác tổng quát hoặc khả năng chống sao chép.\n\n## Chi tiết từng ảnh\n\n| Nhóm | Ảnh | Mã dự kiến | Phân loại | Mã trả về | Điểm | Thời gian (giây) |\n|---|---|---|---|---|---:|---:|\n| chua_dk | anh01.jpg | Chưa đăng ký | khong nhan | — | — | 16.27 |\n| chua_dk | anh02.jpg | Chưa đăng ký | khong nhan | — | — | 17.09 |\n| chua_dk | anh03.jpg | Chưa đăng ký | khong nhan | — | — | 17.77 |\n| chua_dk | anh04.jpg | Chưa đăng ký | khong nhan | — | — | 17.02 |\n| chua_dk | anh05.jpg | Chưa đăng ký | khong nhan | — | — | 17.36 |\n| chua_dk | anh06.jpg | Chưa đăng ký | khong nhan | — | — | 22.27 |\n| chua_dk | anh07.jpg | Chưa đăng ký | khong nhan | — | — | 17.8 |\n| chua_dk | anh08.jpg | Chưa đăng ký | khong nhan | — | — | 17.27 |\n| chua_dk | anh09.jpg | Chưa đăng ký | khong nhan | — | — | 18.41 |\n| chua_dk | anh10.jpg | Chưa đăng ký | khong nhan | — | — | 17.14 |\n| da_dk | anh01.jpg | N01-MAU-001 | dung | N01-MAU-001 | 0.9796 | 44.77 |\n| da_dk | anh02.jpg | N01-MAU-002 | dung | N01-MAU-002 | 0.9793 | 20.2 |\n| da_dk | anh03.jpg | N01-MAU-003 | dung | N01-MAU-003 | 0.9837 | 19.86 |\n| da_dk | anh04.jpg | N01-MAU-004 | dung | N01-MAU-004 | 0.9798 | 18.81 |\n| da_dk | anh05.jpg | N01-MAU-005 | dung | N01-MAU-005 | 0.9732 | 18.36 |\n| da_dk | anh06.jpg | N01-MAU-006 | dung | N01-MAU-006 | 0.9789 | 18.36 |\n| da_dk | anh07.jpg | N01-MAU-007 | dung | N01-MAU-007 | 0.9833 | 18.61 |\n| da_dk | anh08.jpg | N01-MAU-008 | dung | N01-MAU-008 | 0.9867 | 18.44 |\n| da_dk | anh09.jpg | N01-MAU-009 | dung | N01-MAU-009 | 0.9843 | 18.56 |\n| da_dk | anh10.jpg | N01-MAU-010 | dung | N01-MAU-010 | 0.9875 | 18.97 |\n| da_dk | anh11.jpg | N01-MAU-011 | dung | N01-MAU-011 | 0.9875 | 19.14 |\n| da_dk | anh12.jpg | N01-MAU-012 | dung | N01-MAU-012 | 0.9856 | 19.31 |\n| da_dk | anh13.jpg | N01-MAU-013 | dung | N01-MAU-013 | 0.9825 | 20.08 |\n| da_dk | anh14.jpg | N01-MAU-014 | dung | N01-MAU-014 | 0.9845 | 17.81 |\n| da_dk | anh15.jpg | N01-MAU-015 | dung | N01-MAU-015 | 0.9556 | 17.11 |\n| da_dk | anh16.jpg | N01-MAU-016 | dung | N01-MAU-016 | 0.9764 | 18.02 |\n| da_dk | anh17.jpg | N01-MAU-017 | dung | N01-MAU-017 | 0.9823 | 18.36 |\n| da_dk | anh18.jpg | N01-MAU-018 | dung | N01-MAU-018 | 0.9883 | 17.58 |\n| da_dk | anh19.jpg | N01-MAU-019 | dung | N01-MAU-019 | 0.9864 | 17.58 |\n| da_dk | anh20.jpg | N01-MAU-020 | dung | N01-MAU-020 | 0.9795 | 18.45 |\n| da_dk | anh21.jpg | N01-MAU-021 | dung | N01-MAU-021 | 0.9864 | 18.33 |\n| da_dk | anh22.jpg | N01-MAU-022 | dung | N01-MAU-022 | 0.9756 | 20.14 |\n| da_dk | anh23.jpg | N01-MAU-023 | dung | N01-MAU-023 | 0.9881 | 18.09 |\n| da_dk | anh24.jpg | N01-MAU-024 | dung | N01-MAU-024 | 0.9896 | 17.25 |\n| da_dk | anh25.jpg | N01-MAU-025 | dung | N01-MAU-025 | 0.9852 | 18.11 |\n| da_dk | anh26.jpg | N01-MAU-026 | dung | N01-MAU-026 | 0.9894 | 17.61 |\n| da_dk | anh27.jpg | N01-MAU-027 | dung | N01-MAU-027 | 0.981 | 18.72 |\n| da_dk | anh28.jpg | N01-MAU-028 | dung | N01-MAU-028 | 0.9901 | 18.23 |\n| da_dk | anh29.jpg | N01-MAU-029 | dung | N01-MAU-029 | 0.9774 | 18.0 |\n| da_dk | anh30.jpg | N01-MAU-030 | dung | N01-MAU-030 | 0.9827 | 19.58 |\n\n## Bằng chứng\n\nThư mục phan_hoi_goc lưu một tệp JSON cho mỗi lượt, bao gồm phản hồi thực của máy chủ, thời điểm, tên ảnh và SHA-256 nguồn. Trường preview là hình do máy chủ trả về, mã hóa base64. Tệp health.json ghi trạng thái trước khi thử; dữ liệu cục bộ trước đó được lưu riêng trong bang_chung_cuc_bo.\n",
+          "media": [
+            {
+              "id": "4633bb20-e349-47eb-b84c-3cdba93e6f11",
+              "type": "file",
+              "src": "media/73f477d5-bff3-4c73-8bac-86cfd262d56a.csv",
+              "caption": "",
+              "name": "ket_qua_truc_tuyen.csv",
+              "size": 9000,
+              "extension": "csv"
+            },
+            {
+              "id": "e4f4f118-e1e7-4012-8077-4830ed9daafa",
+              "type": "file",
+              "src": "media/730242c2-4bd6-42a1-a34d-f81b29f2bc8e.json",
+              "caption": "",
+              "name": "chua_dk_anh01.json",
+              "size": 537407,
+              "extension": "json"
+            },
+            {
+              "id": "07421f76-1086-472a-b4ab-08b9aa22acb3",
+              "type": "file",
+              "src": "media/5b794b2a-53c1-4495-a600-ffa1fbb8406a.json",
+              "caption": "",
+              "name": "chua_dk_anh02.json",
+              "size": 532255,
+              "extension": "json"
+            },
+            {
+              "id": "0a8e3772-a4d9-4d71-9d51-fade215ebc6d",
+              "type": "file",
+              "src": "media/8b4db58d-6eea-471c-ace7-a75b9c764bea.json",
+              "caption": "",
+              "name": "chua_dk_anh03.json",
+              "size": 537967,
+              "extension": "json"
+            },
+            {
+              "id": "330c87aa-eb49-4dac-a364-ffd5455185a1",
+              "type": "file",
+              "src": "media/12303cce-6520-4d18-bf47-cd4e417259f4.json",
+              "caption": "",
+              "name": "chua_dk_anh04.json",
+              "size": 488155,
+              "extension": "json"
+            },
+            {
+              "id": "7a5b8fed-710a-4b69-9cea-4722a667a82b",
+              "type": "file",
+              "src": "media/b3cfa4c5-68eb-403b-9a76-94a2689ae5d6.json",
+              "caption": "",
+              "name": "chua_dk_anh05.json",
+              "size": 430499,
+              "extension": "json"
+            },
+            {
+              "id": "b6c4f15b-4392-4726-b0ad-1d8cdb1b5990",
+              "type": "file",
+              "src": "media/8a443b7f-c293-4e03-b71d-5581a5fb19f9.json",
+              "caption": "",
+              "name": "chua_dk_anh06.json",
+              "size": 581850,
+              "extension": "json"
+            },
+            {
+              "id": "d9cc5412-0638-42f9-a390-7d958718b843",
+              "type": "file",
+              "src": "media/7d535c93-3b4f-4eef-9f6b-f6ac0647d64e.json",
+              "caption": "",
+              "name": "chua_dk_anh07.json",
+              "size": 542594,
+              "extension": "json"
+            },
+            {
+              "id": "0d18ebf1-2c25-4a28-b604-f09ca91263a2",
+              "type": "file",
+              "src": "media/ecece5c5-1910-4fd4-89ed-670d5f534936.json",
+              "caption": "",
+              "name": "chua_dk_anh08.json",
+              "size": 400718,
+              "extension": "json"
+            },
+            {
+              "id": "2909eb13-7215-4168-8454-4ab33b148e1a",
+              "type": "file",
+              "src": "media/33b8e3bc-1ce2-4a82-a4b4-bbb7b45a6b19.json",
+              "caption": "",
+              "name": "chua_dk_anh09.json",
+              "size": 573043,
+              "extension": "json"
+            },
+            {
+              "id": "ad5db649-91da-4701-8086-70639f6e4192",
+              "type": "file",
+              "src": "media/dfcb05af-e3ff-42aa-a694-1ce13e2e85f2.json",
+              "caption": "",
+              "name": "chua_dk_anh10.json",
+              "size": 500019,
+              "extension": "json"
+            },
+            {
+              "id": "304a8299-f5a0-4858-a537-89e3e7498f68",
+              "type": "file",
+              "src": "media/6d3bce19-a4a2-4162-9dec-9318756f6bd5.json",
+              "caption": "",
+              "name": "da_dk_anh01.json",
+              "size": 783841,
+              "extension": "json"
+            },
+            {
+              "id": "2f81a31a-9111-493d-9515-b6cdc3c70641",
+              "type": "file",
+              "src": "media/863c7518-e442-4e50-88aa-08b2f73076d1.json",
+              "caption": "",
+              "name": "da_dk_anh02.json",
+              "size": 769992,
+              "extension": "json"
+            },
+            {
+              "id": "a74b9db4-a205-4d9b-9d1b-c335c5deb866",
+              "type": "file",
+              "src": "media/d3788dd7-f77d-4667-921f-2877b74edf5e.json",
+              "caption": "",
+              "name": "da_dk_anh03.json",
+              "size": 736202,
+              "extension": "json"
+            },
+            {
+              "id": "9e5634cf-7684-4ad8-8f5f-269b345aa35d",
+              "type": "file",
+              "src": "media/00a76fae-459d-4e89-952f-23de3a70becd.json",
+              "caption": "",
+              "name": "da_dk_anh04.json",
+              "size": 752895,
+              "extension": "json"
+            },
+            {
+              "id": "f3a3d415-2985-4ee3-9194-9db29ec626c4",
+              "type": "file",
+              "src": "media/0af0a887-7d48-46de-a1e0-228349682b2b.json",
+              "caption": "",
+              "name": "da_dk_anh05.json",
+              "size": 736358,
+              "extension": "json"
+            },
+            {
+              "id": "b20f76df-a3fe-4b8f-9fb5-02eee74d2bfb",
+              "type": "file",
+              "src": "media/89a263a3-1667-4b97-8609-0861b3bf5e18.json",
+              "caption": "",
+              "name": "da_dk_anh06.json",
+              "size": 774424,
+              "extension": "json"
+            },
+            {
+              "id": "c68a89dd-d87d-46e8-9eaa-932b8b1fa696",
+              "type": "file",
+              "src": "media/42e3e821-0380-4272-88fd-7c3dde875292.json",
+              "caption": "",
+              "name": "da_dk_anh07.json",
+              "size": 695234,
+              "extension": "json"
+            },
+            {
+              "id": "ffbc404e-8e83-45e5-83b7-7542012e2832",
+              "type": "file",
+              "src": "media/aa28d232-b325-46ad-89be-59b81029957f.json",
+              "caption": "",
+              "name": "da_dk_anh08.json",
+              "size": 702635,
+              "extension": "json"
+            },
+            {
+              "id": "72b8fd6c-ab97-409e-afdf-34fcc91fa6fa",
+              "type": "file",
+              "src": "media/571d7267-85a4-4041-b76b-a544b2a3ed43.json",
+              "caption": "",
+              "name": "da_dk_anh09.json",
+              "size": 730280,
+              "extension": "json"
+            },
+            {
+              "id": "2eca67dc-b878-408c-af25-d969a40fcd6d",
+              "type": "file",
+              "src": "media/b1317971-16d3-4959-a313-94fafb08071b.json",
+              "caption": "",
+              "name": "da_dk_anh10.json",
+              "size": 674090,
+              "extension": "json"
+            },
+            {
+              "id": "7e86883e-c440-44f6-9f55-9d4f32ffb95b",
+              "type": "file",
+              "src": "media/483eaf44-2ced-435f-9895-e24b94f59f8b.json",
+              "caption": "",
+              "name": "da_dk_anh11.json",
+              "size": 701545,
+              "extension": "json"
+            },
+            {
+              "id": "a22c0d11-aebe-4441-9df4-aec778c411c4",
+              "type": "file",
+              "src": "media/ae04360a-ef52-489a-8c46-83b36668870f.json",
+              "caption": "",
+              "name": "da_dk_anh12.json",
+              "size": 737244,
+              "extension": "json"
+            },
+            {
+              "id": "9eb5fe75-d0a2-4eed-b90e-e354f865e851",
+              "type": "file",
+              "src": "media/6bb960e7-ecc3-4436-9a2e-5f7c53ed7bfc.json",
+              "caption": "",
+              "name": "da_dk_anh13.json",
+              "size": 744789,
+              "extension": "json"
+            },
+            {
+              "id": "ff781984-09ff-4310-be1c-e785a89fd6d2",
+              "type": "file",
+              "src": "media/f052b99c-d0b1-4851-b517-9b809813a8c9.json",
+              "caption": "",
+              "name": "da_dk_anh14.json",
+              "size": 724169,
+              "extension": "json"
+            },
+            {
+              "id": "84f9e6be-03ea-4c51-93a5-6e78d5ab1616",
+              "type": "file",
+              "src": "media/aa67f38a-2895-4667-8cd0-4ffe16b86516.json",
+              "caption": "",
+              "name": "da_dk_anh15.json",
+              "size": 739414,
+              "extension": "json"
+            },
+            {
+              "id": "57d23625-9b3d-4fe1-9609-a82ef3aa20cf",
+              "type": "file",
+              "src": "media/9a56dd77-5afa-4c52-8b9d-e0b42201c341.json",
+              "caption": "",
+              "name": "da_dk_anh16.json",
+              "size": 520426,
+              "extension": "json"
+            },
+            {
+              "id": "85f03ba0-89a3-4fbe-b219-e7da8825d39a",
+              "type": "file",
+              "src": "media/c493391d-b924-454a-8202-af04c4f6f8a0.json",
+              "caption": "",
+              "name": "da_dk_anh17.json",
+              "size": 764836,
+              "extension": "json"
+            },
+            {
+              "id": "3ea98065-43d4-4602-8439-69648496b406",
+              "type": "file",
+              "src": "media/fedd2161-8ff8-49f0-aff6-0fb12c1ebe42.json",
+              "caption": "",
+              "name": "da_dk_anh18.json",
+              "size": 617813,
+              "extension": "json"
+            },
+            {
+              "id": "21a70275-3c94-4dff-b5b9-ab630e647048",
+              "type": "file",
+              "src": "media/69d62afa-f2df-49bc-bfd1-0e7799183e1f.json",
+              "caption": "",
+              "name": "da_dk_anh19.json",
+              "size": 683299,
+              "extension": "json"
+            },
+            {
+              "id": "89c1f1fd-0847-43a8-a2c6-c7f114a4f9f9",
+              "type": "file",
+              "src": "media/cd66fe87-247f-4439-a4e0-ddeace8722a2.json",
+              "caption": "",
+              "name": "da_dk_anh20.json",
+              "size": 757383,
+              "extension": "json"
+            },
+            {
+              "id": "d0b7ff56-a1c4-4623-b534-21fc408b44f4",
+              "type": "file",
+              "src": "media/b13f1956-c5ec-4c30-8c5c-af70047cc2d9.json",
+              "caption": "",
+              "name": "da_dk_anh21.json",
+              "size": 723799,
+              "extension": "json"
+            },
+            {
+              "id": "94614c56-c7f4-45e8-865d-e83aafdd526a",
+              "type": "file",
+              "src": "media/18aac701-0067-4b3f-a19a-7bdfa00da871.json",
+              "caption": "",
+              "name": "da_dk_anh22.json",
+              "size": 784812,
+              "extension": "json"
+            },
+            {
+              "id": "25e5894d-af3a-4a27-8f38-cda910cd4250",
+              "type": "file",
+              "src": "media/f8875efa-31bb-43b5-801b-1c5331ab5aca.json",
+              "caption": "",
+              "name": "da_dk_anh23.json",
+              "size": 603981,
+              "extension": "json"
+            },
+            {
+              "id": "0d7ecfd7-e4d9-4ebd-a0dd-6c86565c22b9",
+              "type": "file",
+              "src": "media/d3dc2c72-76d3-4345-b269-75feab7bd97f.json",
+              "caption": "",
+              "name": "da_dk_anh24.json",
+              "size": 596013,
+              "extension": "json"
+            },
+            {
+              "id": "8fe0f554-ee39-4164-9df7-1a261ae5ac8e",
+              "type": "file",
+              "src": "media/624ab1df-c04e-4dae-b3df-67ebc3c4c1e7.json",
+              "caption": "",
+              "name": "da_dk_anh25.json",
+              "size": 676735,
+              "extension": "json"
+            },
+            {
+              "id": "ee55d683-9d8f-493d-bbe9-715adccc4410",
+              "type": "file",
+              "src": "media/c5886632-6723-45b3-b46c-2befc814c711.json",
+              "caption": "",
+              "name": "da_dk_anh26.json",
+              "size": 613742,
+              "extension": "json"
+            },
+            {
+              "id": "c4b1f680-bb49-46bd-8254-78d5dca4e57d",
+              "type": "file",
+              "src": "media/a58db57a-df3a-4527-8e26-81e2e3ab6d67.json",
+              "caption": "",
+              "name": "da_dk_anh27.json",
+              "size": 753167,
+              "extension": "json"
+            },
+            {
+              "id": "b4bf9025-c97d-46aa-9c17-024ec9583b09",
+              "type": "file",
+              "src": "media/05725650-bacb-4ad5-940c-cab17b7a84a3.json",
+              "caption": "",
+              "name": "da_dk_anh28.json",
+              "size": 551480,
+              "extension": "json"
+            },
+            {
+              "id": "c524e148-b737-4559-b8e5-1a9bc7efd6bd",
+              "type": "file",
+              "src": "media/0e8ec2be-123e-4700-b145-400c2f536ac5.json",
+              "caption": "",
+              "name": "da_dk_anh29.json",
+              "size": 749584,
+              "extension": "json"
+            },
+            {
+              "id": "5ce85257-4731-42ae-ac51-28dc1734c36e",
+              "type": "file",
+              "src": "media/febe9267-bfa7-4899-a589-eb91779ea3c3.json",
+              "caption": "",
+              "name": "da_dk_anh30.json",
+              "size": 695823,
+              "extension": "json"
+            }
+          ],
+          "demo": false
+        }
+      ],
       "finish": {
         "title": "Từ ý tưởng\nđến sản phẩm.",
         "summary": "Thêm câu chuyện, hình ảnh và video demo khi sản phẩm sẵn sàng.",
