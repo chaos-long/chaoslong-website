@@ -252,7 +252,19 @@
           "color": "lavender"
         }
       ],
-      "posts": [],
+      "posts": [
+        {
+          "id": "89c585e7-2ff5-411b-b66a-4ece4624e2af",
+          "week": 5,
+          "title": "Báo cáo kết quả kiểm thử ",
+          "date": "2026-11-07",
+          "category": "Testing",
+          "summary": "kết quả kiểm thử sản phẩm tem vân giấy",
+          "body": "# BÁO CÁO KẾT QUẢ THỬ NGHIỆM\n\nDự án Tem vân giấy · Nhóm 01 · 06/11/2026\n\n## 1. Mục đích\n\nĐánh giá bước đầu khả năng của website tem vân giấy khi tra cứu ảnh chụp lại, đồng thời kiểm tra phản hồi đối với một bộ ảnh giấy chưa đăng ký.\n\n## 2. Dữ liệu thử nghiệm\n\nCơ sở dữ liệu trên máy chủ có 33 hồ sơ, gồm 30 mẫu của nhóm và 3 mẫu minh họa. Bộ ảnh kiểm tra gồm 32 ảnh chụp lại do nhóm cung cấp và 10 ảnh giấy chưa đăng ký từ bộ thử trước. Trong báo cáo, ảnh mới được đánh số tạm R01–R32 theo thứ tự tên tệp; đây không phải mã tem đã được xác nhận.\n\n## 3. Cách thực hiện\n\nẢnh được xử lý hướng chụp, thu nhỏ cạnh dài tối đa 1.200 pixel và nén JPEG chất lượng 90. Sau đó từng ảnh được gửi lần lượt tới API /api/match của website https://tem-van-giay.onrender.com/. Ghi lại trạng thái phản hồi, mã sản phẩm nếu có, điểm so khớp và thời gian. Phép thử thực hiện qua API của máy chủ, không phải thao tác nhấn nút trên giao diện.\n\n## 4. Kết quả ảnh chưa đăng ký\n\nCả 10/10 ảnh chưa đăng ký trong bộ đối chứng đều nhận phản hồi không khớp; không ảnh nào được trả hồ sơ. Kết quả này chỉ phản ánh 10 ảnh đã thử, chưa đủ để kết luận hệ thống không nhận nhầm với các ảnh khác.\n\n## 5. Nhận xét\n\nSau điều chỉnh ngưỡng và bổ sung cách so tương quan vân, số ảnh chụp lại được trả thông tin tăng rõ rệt. Tuy nhiên, mã thật của từng ảnh chụp lại chưa được xác nhận đầy đủ: 23/32 là số lượt web trả hồ sơ, không phải tỷ lệ nhận đúng đã được kiểm chứng. Một số kiểm tra bổ sung cho thấy các mẫu khác nhau vẫn có thể bị nhận nhầm, vì vậy đây là bản thử nghiệm.\n\n## 6. Hướng tiếp theo\n\nĐối chiếu từng ảnh chụp lại với mã tem gốc; thử thêm tem chưa đăng ký, ảnh chụp gần, góc chụp và điều kiện ánh sáng khác nhau. Hoàn thiện video và poster của nhóm theo kế hoạch đã thống nhất.\n\n## Phụ lục: Kết quả 32 ảnh chụp lại sau điều chỉnh\n\nMã được trả là kết quả của web, chưa phải mã thật đã xác nhận. Chi tiết tên tệp và thời gian có trong bảng CSV kèm theo.\n\n| Ảnh | Web trả về | Ảnh | Web trả về |\n| --- | --- | --- | --- |\n| R01 | N01-MAU-030 | R17 | N01-MAU-014 |\n| R02 | N01-MAU-010 | R18 | N01-MAU-019 |\n| R03 | Không khớp | R19 | Không khớp |\n| R04 | N01-MAU-026 | R20 | N01-MAU-005 |\n| R05 | N01-MAU-027 | R21 | Không khớp |\n| R06 | N01-MAU-006 | R22 | N01-MAU-020 |\n| R07 | N01-MAU-029 | R23 | N01-MAU-013 |\n| R08 | Không khớp | R24 | N01-MAU-001 |\n| R09 | Không khớp | R25 | N01-MAU-009 |\n| R10 | N01-MAU-007 | R26 | N01-MAU-028 |\n| R11 | N01-MAU-024 | R27 | N01-MAU-012 |\n| R12 | N01-MAU-018 | R28 | N01-MAU-008 |\n| R13 | Không khớp | R29 | N01-MAU-016 |\n| R14 | Không khớp | R30 | N01-MAU-021 |\n| R15 | Không khớp | R31 | N01-MAU-015 |\n| R16 | Không khớp | R32 | N01-MAU-004 |\n\nẢnh chưa đăng ký N01–N10: cả 10 đều báo không khớp.\n",
+          "media": [],
+          "demo": false
+        }
+      ],
       "finish": {
         "title": "Từ ý tưởng\nđến sản phẩm.",
         "summary": "Thêm câu chuyện, hình ảnh và video demo khi sản phẩm sẵn sàng.",
